@@ -7,8 +7,8 @@
  fincl1     = 'NOY', 'NO', 'NO2', 'OH', 'NH4', 'NH3', 'O3', 'PM25_SRF',
   'dry_deposition_NOy_as_N', 'dry_deposition_NHx_as_N', 'wet_deposition_NOy_as_N', 'wet_deposition_NHx_as_N', 'DF_NH3',
   'AQSO4_O3', 'AQSO4_H2O2', ! 'AQSO4_HOBR', 'HOBR',
-  'r_DMS_NO3','r_DMS_OHa','r_DMS_OH',
-!  'r_fkm_DMS_OHa', 'r_fkm_DMS_OHb', 'r_fkm_DMS_NO3', 'r_fkm_DMS_BRO', 'r_fkm_DMS_O3', 'r_fkm_DMS_CL', 'r_fkm_DMSO_OH', 'r_fkm_MSIA_OH', 'r_fkm_MSIA_O3', 
+!  'r_DMS_NO3','r_DMS_OHa','r_DMS_OH',
+  'r_fkm_DMS_OHa', 'r_fkm_DMS_OHb', 'r_fkm_DMS_NO3', 'r_fkm_DMS_BRO', 'r_fkm_DMS_O3', 'r_fkm_DMS_CL', 'r_fkm_DMSO_OH', 'r_fkm_MSIA_OH', 'r_fkm_MSIA_O3', 
   'r_jh2so4', 'r_jso3', 'r_jso2', 'r_SO2_OH', 'r_SO3_H2O',
   'r_OCS_OH', 'r_SO_BRO','r_SO_CLO','r_SO_NO2','r_SO_O2','r_SO_O3','r_SO_OCLO','r_SO_OH',
 !  'r_g2a_SO2_a1','r_g2a_SO2_a2','r_g2a_SO2_a3',
@@ -16,11 +16,31 @@
 !  'r_g2a_H2O2_a1','r_g2a_H2O2_a2','r_g2a_H2O2_a3',
 !  'r_a2g_H2O2_a1','r_a2g_H2O2_a2','r_a2g_H2O2_a3',
 !  'r_alwc_SIV_H2O2_a1','r_alwc_SIV_H2O2_a2','r_alwc_SIV_H2O2_a3',
-!  'r_DMS_O3_a1','r_DMSO_OH_a1','r_MSIA_OH_a1','r_MSIA_O3_a1','r_MSA_OH_a1',
-!  'r_DMS_O3_a2','r_DMSO_OH_a2','r_MSIA_OH_a2','r_MSIA_O3_a2','r_MSA_OH_a2',
-!  'r_DMS_O3_a3','r_DMSO_OH_a3','r_MSIA_OH_a3','r_MSIA_O3_a3','r_MSA_OH_a3',
+  'r_DMS_O3_a1','r_DMSO_OH_a1','r_MSIA_OH_a1','r_MSIA_O3_a1','r_MSA_OH_a1',
+  'r_DMS_O3_a2','r_DMSO_OH_a2','r_MSIA_OH_a2','r_MSIA_O3_a2','r_MSA_OH_a2',
+  'r_DMS_O3_a3','r_DMSO_OH_a3','r_MSIA_OH_a3','r_MSIA_O3_a3','r_MSA_OH_a3',
 !  'r_SIV_HOBR_a1','r_SIV_HOBR_a2','r_SIV_HOBR_a3',
 !  'r_SIV_O3_a1', 'r_SIV_O3_a2', 'r_SIV_O3_a3',
+  'r_g2a_DMS_a1','r_g2a_DMS_a2','r_g2a_DMS_a3','r_a2g_DMS_a1', 'r_a2g_DMS_a2', 'r_a2g_DMS_a3', 
+  'r_g2a_DMSO_a1', 'r_g2a_DMSO_a2', 'r_g2a_DMSO_a3', 'r_a2g_DMSO_a1', 'r_a2g_DMSO_a2', 'r_a2g_DMSO_a3', 
+  'r_g2a_MSIA_a1', 'r_g2a_MSIA_a2', 'r_g2a_MSIA_a3', 'r_a2g_MSIA_a1', 'r_a2g_MSIA_a2', 'r_a2g_MSIA_a3', 
+  'r_g2a_MSA_a1', 'r_g2a_MSA_a2', 'r_g2a_MSA_a3', 'r_a2g_MSA_a1', 'r_a2g_MSA_a2', 'r_a2g_MSA_a3',
+ 'r_DMS_O3_c',
+  'r_DMSO_OH_c',
+  'r_MSIA_OH_c',
+  'r_MSIA_O3_c',
+  'r_MSA_OH_c',
+  'r_g2c_DMS_c','r_c2g_DMS_c',
+  'r_g2c_DMSO_c','r_c2g_DMSO_c',
+  'r_g2c_MSIA_c','r_c2g_MSIA_c',
+  'r_g2c_MSA_c','r_c2g_MSA_c',
+  'CLOUD_PH',
+  'DMS_c', 'TMDMS_c', 'AQ_DMS_c', 'GS_DMS_c', 'DF_DMS_c', 'CT_DMS_c', 'SFDMS_c', 'DDMS_cCHM', 'DMS_c_CHMP', 'DMS_c_CHML', ! 'WD_DMS_c',
+  'DMSO_c', 'TMDMSO_c', 'AQ_DMSO_c', 'GS_DMSO_c', 'DF_DMSO_c', 'CT_DMSO_c', 'SFDMSO_c', 'DDMSO_cCHM', 'DMSO_c_CHMP', 'DMSO_c_CHML', ! 'WD_DMSO_c',
+  'MSIA_c', 'TMMSIA_c', 'AQ_MSIA_c', 'GS_MSIA_c', 'DF_MSIA_c', 'CT_MSIA_c', 'SFMSIA_c', 'DMSIA_cCHM', 'MSIA_c_CHMP', 'MSIA_c_CHML', ! 'WD_MSIA_c',
+  'MSA_c', 'TMMSA_c', 'AQ_MSA_c', 'GS_MSA_c', 'DF_MSA_c', 'CT_MSA_c', 'SFMSA_c', 'DMSA_cCHM', 'MSA_c_CHMP', 'MSA_c_CHML', ! 'WD_MSA_c',
+  'OH_c', 'TMOH_c', 'AQ_OH_c', 'GS_OH_c', 'DF_OH_c', 'CT_OH_c', 'SFOH_c', 'DOH_cCHM', 'OH_c_CHMP', 'OH_c_CHML', ! 'WD_OH_c',
+  'O3_c', 'TMO3_c', 'AQ_O3_c', 'GS_O3_c', 'DF_O3_c', 'CT_O3_c', 'SFO3_c', 'DO3_cCHM', 'O3_c_CHMP', 'O3_c_CHML', ! 'WD_O3_c',
   'SO2', 'TMSO2', 'AQ_SO2', 'GS_SO2', 'DF_SO2', 'CT_SO2', 'SFSO2', 'DSO2CHM', 'SO2_CHMP', 'SO2_CHML', 'WD_SO2',
   'H2SO4', 'TMH2SO4', 'AQ_H2SO4', 'GS_H2SO4', 'DF_H2SO4', 'CT_H2SO4', 'SFH2SO4', 'DH2SO4CHM', 'H2SO4_CHMP', 'H2SO4_CHML', 'WD_H2SO4',
   'SO', 'TMSO', 'AQ_SO', 'GS_SO', 'DF_SO', 'CT_SO', 'SFSO', 'DSOCHM', 'SO_CHMP', 'SO_CHML', ! 'WD_SO',
@@ -73,10 +93,11 @@
   'CH3SOO', 'TMCH3SOO','AQ_CH3SOO','GS_CH3SOO','DF_CH3SOO','SFCH3SOO','WD_CH3SOO',
   'CH3SO2', 'TMCH3SO2','AQ_CH3SO2','GS_CH3SO2','DF_CH3SO2','SFCH3SO2','WD_CH3SO2',
   'CH3SO3', 'TMCH3SO3','AQ_CH3SO3','GS_CH3SO3','DF_CH3SO3','SFCH3SO3','WD_CH3SO3',
-!  'r_ab_DMS_OH','r_ab_DMS_CL','r_ab_MSP_NO','r_ab_MSP_RO2','r_ab_CH3SCH2O','r_ab_CH3S_O3','r_ab_CH3S_O2', 'r_ab_CH3SO_O3',
-!  'r_ab_CH3SOOa','r_ab_CH3SOOb','r_ab_CH3SO2_O3','r_ab_CH3SO2','r_ab_CH3SO3_HO2','r_ab_CH3SO3','r_ab_CH3CH3SCL',
-!  'r_is_shift_1','r_is_shift_2','r_is_OOCH2SCH2OOH_NO','r_is_HOOCH2SCH2O','r_is_OOCH2SCH2OOH_HO2',
-!  'r_is_HPMTF_OH','r_is_HOOCH2SCO_1','r_is_HOOCH2SCO_2','r_is_HOOCH2S_O3','r_is_HOOCH2S_NO2','r_is_HOOCH2SO_O3','r_is_HOOCH2SO_NO2',
+  'r_ab_DMS_OH','r_ab_DMS_CL','r_ab_MSP_NO','r_ab_MSP_RO2','r_ab_CH3SCH2O','r_ab_CH3S_O3','r_ab_CH3S_O2', 'r_ab_CH3SO_O3',
+  'r_ab_CH3SOOa','r_ab_CH3SOOb','r_ab_CH3SO2_O3','r_ab_CH3SO2','r_ab_CH3SO3_HO2','r_ab_CH3SO3','r_ab_CH3CH3SCL',
+  'r_is_shift_1','r_is_shift_2','r_is_OOCH2SCH2OOH_NO','r_is_HOOCH2SCH2O','r_is_OOCH2SCH2OOH_HO2',
+  'r_is_HPMTF_OH','r_is_HOOCH2SCO_1','r_is_HOOCH2SCO_2','r_is_HOOCH2S_O3','r_is_HOOCH2S_NO2','r_is_HOOCH2SO_O3','r_is_HOOCH2SO_NO2',
+!   'r_is_HPMTF_cloud',
   'OOCH2SCH2OOH','TMOOCH2SCH2OOH','GS_OOCH2SCH2OOH','DF_OOCH2SCH2OOH','WD_OOCH2SCH2OOH',
   'HPMTF','TMHPMTF','GS_HPMTF','DF_HPMTF','WD_HPMTF',
   'HOOCH2SCH2O','TMHOOCH2SCH2O','GS_HOOCH2SCH2O','DF_HOOCH2SCH2O','WD_HOOCH2SCH2O',
@@ -103,6 +124,10 @@ gas_wetdep_list                = 'ALKNIT', 'ALKOOH', 'BENZOOH', 'BRONO2', 'BZOOH
          'NOA', 'NTERPOOH', 'ONITR', 'PHENOOH', 'POOH', 'ROOH', 'SO2', 'SOAG0', 'SOAG1', 'SOAG2', 'SOAG3',
          'SOAG4', 'SVOC', 'TERP2OOH', 'TERPNIT', 'TERPOOH', 'TERPROD1', 'TERPROD2', 'TOLOOH', 'XOOH', 'XYLENOOH', 'XYLOLOOH', 
          'DMS', 'DMSO', 'MSIA', 'MSA', 
+         'DMS_c', 'DMSO_c', 'MSIA_c', 'MSA_c',
+         'DMS_a1', 'DMSO_a1', 'MSIA_a1', 'MSA_a1',
+         'DMS_a2', 'DMSO_a2', 'MSIA_a2', 'MSA_a2',
+         'DMS_a3', 'DMSO_a3', 'MSIA_a3', 'MSA_a3',
          'CH3SCH2OO', 'CH3SCH2O', 'CH3S', 'CH3SO', 'CH3SOO', 'CH3SO2', 'CH3SO3', 'CH3CH3SCL',
          'OOCH2SCH2OOH', 'HPMTF', 'HOOCH2SCH2O', 'HOOCH2S', 'HOOCH2SCH2OOH', 'HOOCH2SCO', 'HOOCH2SO'
 
@@ -116,16 +141,19 @@ drydep_list = 'ALKNIT', 'ALKOOH', 'BENZOOH', 'BZOOH', 'C2H5OH', 'C2H5OOH',
       'SOAG4', 'SVOC', 'TERP2OOH', 'TERPNIT', 'TERPOOH', 'TERPROD1', 'TERPROD2',
       'TOLOOH', 'XOOH', 'XYLENOOH', 'XYLOLOOH',
       'DMS', 'DMSO', 'MSIA', 'MSA',
+      'DMS_c', 'DMSO_c', 'MSIA_c', 'MSA_c',
+      'DMS_a1', 'DMSO_a1', 'MSIA_a1', 'MSA_a1',
+      'DMS_a2', 'DMSO_a2', 'MSIA_a2', 'MSA_a2',
+      'DMS_a3', 'DMSO_a3', 'MSIA_a3', 'MSA_a3',
       'CH3SCH2OO', 'CH3SCH2O', 'CH3S', 'CH3SO', 'CH3SOO', 'CH3SO2', 'CH3SO3', 'CH3CH3SCL',
       'OOCH2SCH2OOH', 'HPMTF', 'HOOCH2SCH2O', 'HOOCH2S', 'HOOCH2SCH2OOH', 'HOOCH2SCO', 'HOOCH2SO'
-
 
 ! megan
 megan_factors_file = '/glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart/emis/megan21_emis_factors_78pft_c20161108.nc'
 
 ! surface emissions
 srf_emis_type         = 'CYCLICAL'
-srf_emis_cycle_yr     = 1850
+srf_emis_cycle_yr     = 2000
 
 srf_emis_specifier    =
       'BIGALK -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_BIGALK_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
@@ -198,10 +226,10 @@ ext_frc_specifier		=
         'SVOC   -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SVOC_bb_vertical_1750-2015_0.9x1.25_c20170322.nc',
         'SO2    -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SO2_contvolcano_vertical_1750-2100_0.9x1.25_c20170322.nc',
         'SO2    -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SO2_aircraft_vertical_1750-2015_0.9x1.25_c20170608.nc',
-!         'SO2    -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/stratvolc/VolcanEESMv3.10_SO2_1995-2005average_1deg_ZeroTrop_c180912.nc'
-        'SO2    -> /glade/u/home/vfung/CESM/special_input/VolcanEESMv3.10_SO2_1995-2005average_1deg_ZeroTrop_as1850_c20210203_fkm.nc'
+        'SO2    -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/stratvolc/VolcanEESMv3.10_SO2_1995-2005average_1deg_ZeroTrop_c180912.nc'
+!        'SO2    -> /glade/u/home/vfung/CESM/special_input/VolcanEESMv3.10_SO2_1995-2005average_1deg_ZeroTrop_as1850_c20210203_fkm.nc'
 ext_frc_type		= 'CYCLICAL'
-ext_frc_cycle_yr		= 1850
+ext_frc_cycle_yr		= 2000
 
 &chem_surfvals_nl
  flbc_cycle_yr		= 2000
@@ -210,7 +238,7 @@ ext_frc_cycle_yr		= 1850
 /
 
 &prescribed_strataero_nl
- prescribed_strataero_cycle_yr		= 1850
+ prescribed_strataero_cycle_yr		= 2000
  prescribed_strataero_datapath		= '/glade/p/cesmdata/cseg/inputdata/atm/cam/ozone'
  prescribed_strataero_file		= 'ozone_strataero_CAM6chem_1849-2014_zm_5day_c170924.nc'
  prescribed_strataero_type		= 'CYCLICAL'
@@ -233,7 +261,7 @@ chem_rad_passive      = .false.
 
  history_aero_optics            =           .true.
  history_aerosol                = .false.
- history_clubb = .true.
+ history_clubb = .false.
 
 mode_defs		= 
   'mam4_mode1:accum:=',

@@ -94,8 +94,23 @@ subroutine neu_wetdep_init
       case( 'CH3SCH2OO', 'CH3SCH2O', 'CH3S', 'CH3SO', 'CH3SOO', 'CH3SO2', 'CH3SO3', 'CH3CH3SCL')    ! added by fkm for H abstraction
          test_name = 'DMS'    ! added by fkm for H abstraction
          
-      case( 'OOCH2SCH2OOH', 'HPMTF', 'HOOCH2SCH2O', 'HOOCH2S', 'HOOCH2SCH2OOH', 'HOOCH2SCO', 'HOOCH2SO')    ! added by fkm for iso pathway
+      case( 'OOCH2SCH2OOH', 'HPMTF', 'HOOCH2SCH2O', 'HOOCH2S', 'HOOCH2SCO', 'HOOCH2SO')    ! added by fkm for iso pathway
          test_name = 'DMS'    ! added by fkm for iso pathway
+         
+      case( 'MSA_a1', 'MSA_a2', 'MSA_a3', 'MSA_c')    ! added by fkm for aq dep
+         test_name = 'MSA'    ! added by fkm for for aq dep
+         
+      case( 'HOOCH2SCH2OOH')    ! added by fkm for aq dep
+         test_name = 'MSA'    ! added by fkm for for aq dep
+         
+      case( 'MSIA_a1', 'MSIA_a2', 'MSIA_a3', 'MSIA_c')    ! added by fkm for aq dep
+         test_name = 'MSIA'    ! added by fkm for for aq dep
+      
+      case( 'DMSO_a1', 'DMSO_a2', 'DMSO_a3', 'DMSO_c')    ! added by fkm for aq dep
+         test_name = 'DMSO'    ! added by fkm for for aq dep
+         
+      case( 'DMS_a1', 'DMS_a2', 'DMS_a3', 'DMS_c')    ! added by fkm for aq dep
+         test_name = 'DMS'    ! added by fkm for for aq dep
 
       case( 'HYAC', 'CH3COOH' , 'HCOOH', 'EOOH', 'IEPOX' )
          test_name = 'CH2O'

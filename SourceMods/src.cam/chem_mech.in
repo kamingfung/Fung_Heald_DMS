@@ -8,8 +8,8 @@
 *     lke : 2018-04-23 : Latest change only removes O3S loss reactions.
 *     fkm : 2020-03-17 : DMS oxidation gas-phase reactions added
 *     fkm : 2020-04-08 : DMS oxidation aq-phase reactions (on aerosol particle) added
-*     fkm : 2021-01-19 : for baseline case
-*     fkm : 2021-02-14 : standard chemistry with MOSAIC
+*     fkm : 2021-05-28 : new cloud reactions
+
 
       SPECIES
 
@@ -90,21 +90,36 @@
  COFCL -> COFCl,
  CRESOL -> C7H8O,
  DMS -> CH3SCH3,
+ DMSO -> CH3SOCH3,
+ MSIA -> CH3SO2H,
+ MSA -> CH3SO3H,
+ DMS_c -> CH3SCH3,
+ DMSO_c -> CH3SOCH3,
+ MSIA_c -> CH3SO2H,
+ MSA_c -> CH3SO3H,
+ OH_c -> OH,
+ O3_c -> O3,
  DMS_a1 -> CH3SCH3,
  DMS_a2 -> CH3SCH3,
  DMS_a3 -> CH3SCH3,
- DMSO -> CH3SOCH3,
  DMSO_a1 -> CH3SOCH3,
  DMSO_a2 -> CH3SOCH3,
  DMSO_a3 -> CH3SOCH3,
- MSIA -> CH3SO2H,
  MSIA_a1 -> CH3SO2H,
  MSIA_a2 -> CH3SO2H,
  MSIA_a3 -> CH3SO2H,
- MSA -> CH3SO3H,
  MSA_a1 -> CH3SO3H,
  MSA_a2 -> CH3SO3H,
  MSA_a3 -> CH3SO3H,
+ OH_a1 -> OH,
+ OH_a2 -> OH,
+ OH_a3 -> OH,
+ O3_a1 -> O3,
+ O3_a2 -> O3,
+ O3_a3 -> O3,
+ HOBR_a1 -> HOBr,
+ HOBR_a2 -> HOBr,
+ HOBR_a3 -> HOBr,
  CH3SCH2OO,
  CH3SCH2O,
  CH3CH3SCL -> CH3CH3SCl
@@ -120,15 +135,6 @@
  HOOCH2SCH2OOH
  HOOCH2SCO
  HOOCH2SO
- OH_a1 -> OH,
- OH_a2 -> OH,
- OH_a3 -> OH,
- O3_a1 -> O3,
- O3_a2 -> O3,
- O3_a3 -> O3,
- HOBR_a1 -> HOBr,
- HOBR_a2 -> HOBr,
- HOBR_a3 -> HOBr,
  dst_a1 -> AlSiO5,
  dst_a2 -> AlSiO5,
  dst_a3 -> AlSiO5,
@@ -456,6 +462,12 @@
  MSA_a1
  MSA_a2
  MSA_a3
+ DMS_c
+ DMSO_c
+ MSIA_c
+ MSA_c
+ OH_c
+ O3_c
  CH3SCH2OO
  CH3SCH2O
  CH3CH3SCL
@@ -1185,10 +1197,10 @@
 *********************************
 *** Tropospheric Aerosol
 *********************************
-[DMS_NO3]              DMS + NO3  -> SO2 + HNO3                                 ; 1.9e-13, 520
-[DMS_OHa]              DMS + OH  -> SO2                                         ; 9.6e-12, -234
+* [DMS_NO3]              DMS + NO3  -> SO2 + HNO3                                 ; 1.9e-13, 520
+* [DMS_OHa]              DMS + OH  -> SO2                                         ; 9.6e-12, -234
 [NH3_OH]               NH3 + OH  -> H2O + 1*NHDEP                               ; 1.7e-12, -710
-[usr_DMS_OH]           DMS + OH  -> 0.5*SO2 + 0.5*HO2
+* [usr_DMS_OH]           DMS + OH  -> 0.5*SO2 + 0.5*HO2
 [usr_GLYOXAL_aer]      GLYOXAL  -> SOAG0
 [usr_HO2_aer]          HO2  -> 0.5*H2O2
 [usr_HONITR_aer]       HONITR  -> HNO3
@@ -1203,6 +1215,130 @@
 [usr_NTERPOOH_aer]     NTERPOOH  -> HNO3
 [usr_ONITR_aer]        ONITR  -> HNO3
 [usr_TERPNIT_aer]      TERPNIT  -> HNO3
+*********************************
+*** fkm for DMS gas Chem
+*********************************
+[ab_DMS_OH]            DMS + OH   ->  CH3SCH2OO                                           ; 1.12e-11, -250
+[ab_DMS_CL]            DMS + CL   ->  0.45*CH3SCH2OO + 0.55*CH3CH3SCL + 0.45*HCL          ; 3.40e-10
+[ab_CH3CH3SCL]         CH3CH3SCL  ->  DMS + CL                                            ; 9.00e1
+[ab_MSP_NO]            CH3SCH2OO + NO   ->  CH3SCH2O + NO2                                ; 4.90e-12, 260
+[ab_MSP_RO2]           CH3SCH2OO + RO2  ->  CH3SCH2O + O2                             ; 3.74e-12
+[ab_CH3SCH2O]          CH3SCH2O   ->  CH3S                                          ; 1.00e6
+[ab_CH3S_O3]           CH3S + O3  ->  CH3SO + O2                                    ; 1.15e-12, 430
+[ab_CH3S_O2]           CH3S + O2  ->  CH3SOO                                        ; 1.20e-16, 1580
+[ab_CH3SO_O3]          CH3SO + O3 ->  CH3O2 + SO2                                   ; 4.00e-13
+[ab_CH3SOOa]           CH3SOO     ->  CH3O2 + SO2                                   ; 5.60e16, -10870
+[ab_CH3SOOb]           CH3SOO     ->  CH3SO2                                        ; 1.00
+[ab_CH3SO2_O3]         CH3SO2 + O3  ->  CH3SO3 + O2                                 ; 3.00e-13
+[ab_CH3SO2]            CH3SO2       ->  CH3O2 + SO2                                 ; 5.00e13, -9673
+[ab_CH3SO3_HO2]        CH3SO3 + HO2 ->  MSA + O2                                    ; 5.00e-11
+[ab_CH3SO3]            CH3SO3       ->  CH3O2 + H2SO4                               ; 5.00e13, -9946
+[is_shift_1]           CH3SCH2OO          ->  OOCH2SCH2OOH
+[is_shift_2]           OOCH2SCH2OOH       ->  HPMTF
+[is_OOCH2SCH2OOH_NO]   OOCH2SCH2OOH + NO  ->  HOOCH2SCH2O + NO2                     ; 4.90e-12, 260
+[is_HOOCH2SCH2O]       HOOCH2SCH2O        ->  HOOCH2S + CH2O                         ; 1.00e6
+[is_OOCH2SCH2OOH_HO2]  OOCH2SCH2OOH + HO2 ->  HOOCH2SCH2OOH + O2                    ; 1.13e-13, 1300
+[is_HPMTF_OH]          HPMTF + OH         ->  HOOCH2SCO + H2O                       ; 1.11e-11
+[is_HOOCH2SCO_1]       HOOCH2SCO          ->  HOOCH2S + CO                          ; 9.20e9, -505.4
+[is_HOOCH2SCO_2]       HOOCH2SCO          ->  OH + CH2O + OCS                       ; 1.6e7, -1468.6
+[is_HOOCH2S_O3]        HOOCH2S + O3       ->  HOOCH2SO + O2                         ; 1.15e-12, 430
+[is_HOOCH2S_NO2]       HOOCH2S + NO2      ->  HOOCH2SO + NO                         ; 6.00e-11, 240
+[is_HOOCH2SO_O3]       HOOCH2SO + O3      ->  SO2 + CH2O + OH + O2                  ; 4.00e-13
+[is_HOOCH2SO_NO2]      HOOCH2SO + NO2     ->  SO2 + CH2O + OH + NO                  ; 1.20e-11
+[fkm_DMS_OHa]          DMS + OH   ->  SO2 + CH3O2 + CH2O                            ; 0.00
+[fkm_DMS_OHb]          DMS + OH   ->  0.6*SO2 + 0.4*DMSO + CH3O2
+[fkm_DMS_NO3]          DMS + NO3  ->  SO2 + HNO3 + CH3O2 + CH2O                     ; 1.13e-12, 530
+[fkm_DMS_BRO]          DMS + BRO  ->  DMSO + BR                                     ; 3.39e-13, 950
+[fkm_DMS_O3]           DMS + O3   ->  SO2                                           ; 1.00e-19
+[fkm_DMS_CL]           DMS + CL   ->  0.5*SO2 + 0.5*DMSO + 0.5*HCL + 0.5*CLO        ; 3.40e-10
+[fkm_DMSO_OH]          DMSO + OH  ->  0.95*MSIA + 0.05*SO2                          ; 8.94e-11, 800
+[fkm_MSIA_OH]          MSIA + OH  ->  0.9*SO2 + 0.1*MSA                             ; 9.0e-11
+[fkm_MSIA_O3]          MSIA + O3  ->  MSA                                           ; 2.0e-18
+*********************************
+*** fkm for Phase Transfer: Gas-aqueous phase transition and multi-phase reactions for SO2 + H2O2
+*********************************
+*********************************
+*** fkm for Phase Transfer: Gas-aqueous phase transition for DMS oxidation
+*********************************
+[g2a_DMS_a1]                DMS -> DMS_a1
+[g2a_DMS_a2]                DMS -> DMS_a2
+[g2a_DMS_a3]                DMS -> DMS_a3
+[a2g_DMS_a1]                DMS_a1 -> DMS
+[a2g_DMS_a2]                DMS_a2 -> DMS
+[a2g_DMS_a3]                DMS_a3 -> DMS
+[g2a_DMSO_a1]               DMSO -> DMSO_a1
+[g2a_DMSO_a2]               DMSO -> DMSO_a2
+[g2a_DMSO_a3]               DMSO -> DMSO_a3
+[a2g_DMSO_a1]               DMSO_a1 -> DMSO
+[a2g_DMSO_a2]               DMSO_a2 -> DMSO
+[a2g_DMSO_a3]               DMSO_a3 -> DMSO
+[g2a_MSIA_a1]               MSIA -> MSIA_a1
+[g2a_MSIA_a2]               MSIA -> MSIA_a2
+[g2a_MSIA_a3]               MSIA -> MSIA_a3
+[a2g_MSIA_a1]               MSIA_a1 -> MSIA
+[a2g_MSIA_a2]               MSIA_a2 -> MSIA
+[a2g_MSIA_a3]               MSIA_a3 -> MSIA
+[g2a_MSA_a1]                MSA -> MSA_a1
+[g2a_MSA_a2]                MSA -> MSA_a2
+[g2a_MSA_a3]                MSA -> MSA_a3
+[a2g_MSA_a1]                MSA_a1 -> MSA
+[a2g_MSA_a2]                MSA_a2 -> MSA
+[a2g_MSA_a3]                MSA_a3 -> MSA
+[g2a_OH_a1]                OH -> OH_a1
+[g2a_OH_a2]                OH -> OH_a2
+[g2a_OH_a3]                OH -> OH_a3
+[a2g_OH_a1]                OH_a1 -> OH
+[a2g_OH_a2]                OH_a2 -> OH
+[a2g_OH_a3]                OH_a3 -> OH
+[g2a_O3_a1]                O3 -> O3_a1
+[g2a_O3_a2]                O3 -> O3_a2
+[g2a_O3_a3]                O3 -> O3_a3
+[a2g_O3_a1]                O3_a1 -> O3
+[a2g_O3_a2]                O3_a2 -> O3
+[a2g_O3_a3]                O3_a3 -> O3
+*********************************
+*** fkm for Phase Transfer: aqueous-phase reactions for DMS oxidation
+*********************************
+[DMS_O3_a1]                 DMS_a1  + O3_a1 -> DMSO_a1 + O2
+[DMSO_OH_a1]                DMSO_a1 + OH_a1 -> MSIA_a1
+[MSIA_OH_a1]                MSIA_a1 + OH_a1 -> MSA_a1
+[MSIA_O3_a1]                MSIA_a1 + O3_a1 -> MSA_a1
+[MSA_OH_a1]                 MSA_a1  + OH_a1 -> so4_a1
+[DMS_O3_a2]                 DMS_a2  + O3_a2 -> DMSO_a2 + O2
+[DMSO_OH_a2]                DMSO_a2 + OH_a2 -> MSIA_a2
+[MSIA_OH_a2]                MSIA_a2 + OH_a2 -> MSA_a2
+[MSIA_O3_a2]                MSIA_a2 + O3_a2 -> MSA_a2
+[MSA_OH_a2]                 MSA_a2  + OH_a2 -> so4_a2
+[DMS_O3_a3]                 DMS_a3  + O3_a3 -> DMSO_a3 + O2
+[DMSO_OH_a3]                DMSO_a3 + OH_a3 -> MSIA_a3
+[MSIA_OH_a3]                MSIA_a3 + OH_a3 -> MSA_a3
+[MSIA_O3_a3]                MSIA_a3 + O3_a3 -> MSA_a3
+[MSA_OH_a3]                 MSA_a3  + OH_a3 -> so4_a3
+*********************************
+*** fkm for Cloud Pathway: Gas-cloud phase transition for DMS oxidation
+*********************************
+[g2c_DMS_c]                DMS      -> DMS_c
+[c2g_DMS_c]                DMS_c    -> DMS
+[g2c_DMSO_c]               DMSO     -> DMSO_c
+[c2g_DMSO_c]               DMSO_c   -> DMSO
+[g2c_MSIA_c]               MSIA     -> MSIA_c
+[c2g_MSIA_c]               MSIA_c   -> MSIA
+[g2c_MSA_c]                MSA      -> MSA_c
+[c2g_MSA_c]                MSA_c    -> MSA
+[g2c_OH_c]                 OH       -> OH_c
+[c2g_OH_c]                 OH_c     -> OH
+[g2c_O3_c]                 O3       -> O3_c
+[c2g_O3_c]                 O3_c     -> O3
+*********************************
+*** fkm for Cloud Pathway: cloud-phase reactions for DMS oxidation
+*********************************
+[DMS_O3_c]                 DMS_c  + O3_c -> DMSO_c + O2_c
+[DMSO_OH_c]                DMSO_c + OH_c -> MSIA_c
+[MSIA_OH_c]                MSIA_c + OH_c -> MSA_c
+[MSIA_O3_c]                MSIA_c + O3_c -> MSA_c
+[MSA_OH_c]                 MSA_c  + OH_c -> so4_a3
+*********************************
+*** fkm for Phase Transfer: SIV
 *********************************
 *********************************
 *** SOA

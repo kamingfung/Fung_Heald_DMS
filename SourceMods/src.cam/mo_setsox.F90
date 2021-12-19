@@ -157,6 +157,7 @@ contains
        qcw,    &
        qin,    &
        xphlwc, &
+       cloud_ph, &  ! added by fkm for cloud reactions
        aqso4,  &
        aqh2so4,&
        aqso4_h2o2, &
@@ -213,6 +214,8 @@ contains
     real(r8), target, intent(inout) :: qcw(:,:,:)        ! cloud-borne aerosol (vmr)
     real(r8),         intent(inout) :: qin(:,:,:)        ! transported species ( vmr )
     real(r8),         intent(out)   :: xphlwc(:,:)       ! pH value multiplied by lwc
+    
+    real(r8),         intent(out)   :: cloud_ph(:,:)       ! cloud ph; added by fkm for cloud reaction
 
     real(r8),         intent(out)   :: aqso4(:,:)                   ! aqueous phase chemistry
     real(r8),         intent(out)   :: aqh2so4(:,:)                 ! aqueous phase chemistry
@@ -1008,10 +1011,12 @@ contains
          aqso4, aqh2so4, aqso4_h2o2, aqso4_o3, aqso4_h2o2_3d=aqso4_h2o2_3d, aqso4_o3_3d=aqso4_o3_3d )
     
     xphlwc(:,:) = 0._r8
+    cloud_ph(:,:) = 4.5_r8
     do k = 1, pver
        do i = 1, ncol
           if (cldfrc(i,k)>=1.e-5_r8 .and. lwc(i,k)>=1.e-8_r8) then
              xphlwc(i,k) = -1._r8*log10(xph(i,k)) * lwc(i,k)
+             cloud_ph(i,k) = -1._r8*log10(xph(i,k))
           endif
        end do
     end do

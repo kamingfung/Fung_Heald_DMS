@@ -84,6 +84,12 @@ module mo_drydep
   integer :: dmso_ndx, msia_ndx, msa_ndx  ! added by fkm for deposition
   logical :: dmso_dd, msia_dd, msa_dd  ! added by fkm for deposition
   
+  integer :: dms_a1_ndx, dms_a2_ndx, dms_a3_ndx, dmso_a1_ndx, dmso_a2_ndx, dmso_a3_ndx, msia_a1_ndx, msia_a2_ndx, msia_a3_ndx, msa_a1_ndx, msa_a2_ndx, msa_a3_ndx    ! added by fkm for aq dep
+  integer :: dms_a1_dd, dms_a2_dd, dms_a3_dd, dmso_a1_dd, dmso_a2_dd, dmso_a3_dd, msia_a1_dd, msia_a2_dd, msia_a3_dd, msa_a1_dd, msa_a2_dd, msa_a3_dd    ! added by fkm for aq dep
+  
+  integer :: dms_c_ndx, dmso_c_ndx, msia_c_ndx, msa_c_ndx    ! added by fkm for cloud dep
+  integer :: dms_c_dd, dmso_c_dd, msia_c_dd, msa_c_dd    ! added by fkm for cloud dep
+  
   integer :: CH3SCH2OO_ndx, CH3SCH2O_ndx, CH3S_ndx, CH3SO_ndx, CH3SOO_ndx, CH3SO2_ndx, CH3SO3_ndx   ! added by fkm for H abstraction
   logical :: CH3SCH2OO_dd, CH3SCH2O_dd, CH3S_dd, CH3SO_dd, CH3SOO_dd, CH3SO2_dd, CH3SO3_dd   ! added by fkm for H abstraction
   
@@ -1702,6 +1708,46 @@ contains
     dmso_dd     = has_drydep('DMSO')    ! added by fkm for deposition
     msia_dd     = has_drydep('MSIA')    ! added by fkm for deposition
     msa_dd      = has_drydep('MSA')     ! added by fkm for deposition
+    
+    dms_a1_ndx     = get_spc_ndx('DMS_a1')    ! added by fkm for aq dep
+    dmso_a1_ndx    = get_spc_ndx('DMSO_a1')   ! added by fkm for aq dep
+    msia_a1_ndx    = get_spc_ndx('MSIA_a1')   ! added by fkm for aq dep
+    msa_a1_ndx     = get_spc_ndx('MSA_a1')    ! added by fkm for aq dep
+
+    dms_a1_dd      = has_drydep('DMS_a1')     ! added by fkm for aq dep
+    dmso_a1_dd     = has_drydep('DMSO_a1')    ! added by fkm for aq dep
+    msia_a1_dd     = has_drydep('MSIA_a1')    ! added by fkm for aq dep
+    msa_a1_dd      = has_drydep('MSA_a1')     ! added by fkm for aq dep
+    
+    dms_a2_ndx     = get_spc_ndx('DMS_a2')    ! added by fkm for aq dep
+    dmso_a2_ndx    = get_spc_ndx('DMSO_a2')   ! added by fkm for aq dep
+    msia_a2_ndx    = get_spc_ndx('MSIA_a2')   ! added by fkm for aq dep
+    msa_a2_ndx     = get_spc_ndx('MSA_a2')    ! added by fkm for aq dep
+
+    dms_a2_dd      = has_drydep('DMS_a2')     ! added by fkm for aq dep
+    dmso_a2_dd     = has_drydep('DMSO_a2')    ! added by fkm for aq dep
+    msia_a2_dd     = has_drydep('MSIA_a2')    ! added by fkm for aq dep
+    msa_a2_dd      = has_drydep('MSA_a2')     ! added by fkm for aq dep
+    
+    dms_a3_ndx     = get_spc_ndx('DMS_a3')    ! added by fkm for aq dep
+    dmso_a3_ndx    = get_spc_ndx('DMSO_a3')   ! added by fkm for aq dep
+    msia_a3_ndx    = get_spc_ndx('MSIA_a3')   ! added by fkm for aq dep
+    msa_a3_ndx     = get_spc_ndx('MSA_a3')    ! added by fkm for aq dep
+
+    dms_a3_dd      = has_drydep('DMS_a3')     ! added by fkm for aq dep
+    dmso_a3_dd     = has_drydep('DMSO_a3')    ! added by fkm for aq dep
+    msia_a3_dd     = has_drydep('MSIA_a3')    ! added by fkm for aq dep
+    msa_a3_dd      = has_drydep('MSA_a3')     ! added by fkm for aq dep
+    
+    dms_c_ndx     = get_spc_ndx('DMS_c')    ! added by fkm for cloud dep
+    dmso_c_ndx    = get_spc_ndx('DMSO_c')   ! added by fkm for cloud dep
+    msia_c_ndx    = get_spc_ndx('MSIA_c')   ! added by fkm for cloud dep
+    msa_c_ndx     = get_spc_ndx('MSA_c')    ! added by fkm for cloud dep
+    
+    dms_a1_dd      = has_drydep('DMS_a1')     ! added by fkm for cloud dep
+    dmso_a1_dd     = has_drydep('DMSO_a1')    ! added by fkm for cloud dep
+    msia_a1_dd     = has_drydep('MSIA_a1')    ! added by fkm for cloud dep
+    msa_a1_dd      = has_drydep('MSA_a1')     ! added by fkm for cloud dep
     
     ! ===== [BEG: added by fkm for H abstraction] =====
     CH3SCH2OO_ndx = get_spc_ndx('CH3SCH2OO')

@@ -496,8 +496,8 @@ contains
     !!! ===== BEG: To save aerosol aerosol water ratio; fkm for MOSAIC alwc_vol_vol
     call addfld ('qaerwat_bin1', (/ 'lev' /), 'A', 'kg/kg', 'aerosol water mixing ratio (bin1)' )
     call addfld ('qaerwat_bin2', (/ 'lev' /), 'A', 'kg/kg', 'aerosol water mixing ratio (bin2)' )
-    call addfld ('qaerwat_bin3', (/ 'lev' /), 'A', 'kg/kg', 'aerosol water mixing ratio(bin3)' )
-    call addfld ('qaerwat_bin4', (/ 'lev' /), 'A', 'kg/kg', 'aerosol water mixing ratiopH (bin4)' )
+    call addfld ('qaerwat_bin3', (/ 'lev' /), 'A', 'kg/kg', 'aerosol water mixing ratio (bin3)' )
+    call addfld ('qaerwat_bin4', (/ 'lev' /), 'A', 'kg/kg', 'aerosol water mixing ratio (bin4)' )
     
     call add_default( 'qaerwat_bin1', 1, ' ' )
     call add_default( 'qaerwat_bin2', 1, ' ' )
@@ -740,7 +740,9 @@ contains
           end if
 
        end do
-
+       
+       call addfld( 'CLOUD_PH',    (/ 'lev' /), 'A','unitless',   'CLOUD PH from SETSOX')
+       
        call addfld( 'XPH_LWC',    (/ 'lev' /), 'A','kg/kg',   'pH value multiplied by lwc')
        call addfld ('AQSO4_H2O2', horiz_only,  'A','kg/m2/s', 'SO4 aqueous phase chemistry due to H2O2')
        call addfld ('AQSO4_O3',   horiz_only,  'A','kg/m2/s', 'SO4 aqueous phase chemistry due to O3')
@@ -1874,6 +1876,8 @@ contains
                                     tfld, pmid, pdel, mbar, relhum, &
                                     zm,  qh2o, cwat, cldfr, cldnum, &
                                     airdens, invariants, del_h2so4_gasprod,  &
+                                    xphlwc, & ! added by fkm for cloud rxn
+                                    cloud_ph, & ! added by fkm for cloud reactions
                                     vmr0, vmr, pbuf )
 
     use time_manager,          only : get_nstep
@@ -1910,6 +1914,8 @@ contains
     real(r8), intent(in) :: cldnum(:,:)       ! droplet number concentration (#/kg)
     real(r8), intent(in) :: vmr0(:,:,:)       ! initial mixing ratios (before gas-phase chem changes)
     real(r8), intent(inout) :: vmr(:,:,:)         ! mixing ratios ( vmr )
+    real(r8), intent(out) :: xphlwc(:,:)      ! added by fkm for cloud reactions; pH value multiplied by lwc
+    real(r8), intent(out) :: cloud_ph(:,:)    ! added by fkm for cloud reactions; cloud pH from setsox
 
     type(physics_buffer_desc), pointer :: pbuf(:)
     
@@ -1938,7 +1944,7 @@ contains
     real(r8) ::  aqh2so4(ncol,ntot_amode)             ! aqueous phase chemistry
     real(r8) ::  aqso4_h2o2(ncol)                     ! SO4 aqueous phase chemistry due to H2O2
     real(r8) ::  aqso4_o3(ncol)                       ! SO4 aqueous phase chemistry due to O3
-    real(r8) ::  xphlwc(ncol,pver)                    ! pH value multiplied by lwc
+    ! real(r8) ::  xphlwc(ncol,pver)                    ! pH value multiplied by lwc
     real(r8) ::  nh3_beg(ncol,pver)
     real(r8), pointer :: fldcw(:,:)
     real(r8), pointer :: sulfeq(:,:,:)
@@ -1983,9 +1989,9 @@ contains
 !
 ! Aerosol processes ...
 !
-    call qqcw2vmr( lchnk, vmrcw, mbar, ncol, loffset, pbuf )
+    call qqcw2vmr( lchnk, vmrcw, mbar, ncol, loffset, pbuf )   ! fkm: cloud water concentration to number mixing ratio? -> vmrcw
 
-    if (.not. is_spcam_m2005) then  ! regular CAM
+    if (.not. is_spcam_m2005) then  ! regular CAM     ! setting old value or vmr and vmrcw
        dvmrdt(:ncol,:,:) = vmr(:ncol,:,:)
        dvmrcwdt(:ncol,:,:) = vmrcw(:ncol,:,:)
 
@@ -2009,6 +2015,7 @@ contains
                vmrcw,    &
                vmr,      &
                xphlwc,   &
+               cloud_ph, &  ! added by fkm for Cloud reactions
                aqso4,    &
                aqh2so4,  &
                aqso4_h2o2, &
@@ -2026,6 +2033,8 @@ contains
        call outfld( 'AQSO4_H2O2', aqso4_h2o2(:ncol), ncol, lchnk)
        call outfld( 'AQSO4_O3',   aqso4_o3(:ncol),   ncol, lchnk)
        call outfld( 'XPH_LWC',    xphlwc(:ncol,:),   ncol, lchnk )
+       
+       call outfld( 'CLOUD_PH',    cloud_ph(:ncol,:),   ncol, lchnk )
 
     endif
 
