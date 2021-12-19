@@ -1338,6 +1338,14 @@
 [MSIA_O3_c]                MSIA_c + O3_c -> MSA_c
 [MSA_OH_c]                 MSA_c  + OH_c -> so4_a3
 *********************************
+*** fkm for MSA RT
+*********************************
+[MSA_to_SO4_g]              MSA     ->  so4_a2                       ; 1.0e10
+[MSA_to_SO4_a1]             MSA_a1  ->  so4_a1                       ; 1.0e10
+[MSA_to_SO4_a2]             MSA_a2  ->  so4_a2                       ; 1.0e10
+[MSA_to_SO4_a3]             MSA_a3  ->  so4_a3                       ; 1.0e10
+[MSA_to_SO4_c]              MSA_c   ->  so4_a3                       ; 1.0e10
+*********************************
 *** fkm for Phase Transfer: SIV
 *********************************
 *********************************
