@@ -1,0 +1,342 @@
+! Users should add all user specific namelist changes below in the form of 
+! namelist_var = new_namelist_value 
+
+ avgflag_pertape	= 'A'!
+ mfilt	 = 1
+ nhtfrq = 0
+ fincl1     = 'NOY', 'NO', 'NO2', 'OH', 'NH4', 'NH3', 'O3', 'PM25_SRF',
+  'dry_deposition_NOy_as_N', 'dry_deposition_NHx_as_N', 'wet_deposition_NOy_as_N', 'wet_deposition_NHx_as_N', 'DF_NH3',
+  'AQSO4_O3', 'AQSO4_H2O2', ! 'AQSO4_HOBR', 'HOBR',
+  'r_DMS_NO3','r_DMS_OHa','r_DMS_OH',
+!  'r_fkm_DMS_OHa', 'r_fkm_DMS_OHb', 'r_fkm_DMS_NO3', 'r_fkm_DMS_BRO', 'r_fkm_DMS_O3', 'r_fkm_DMS_CL', 'r_fkm_DMSO_OH', 'r_fkm_MSIA_OH', 'r_fkm_MSIA_O3', 
+  'r_jh2so4', 'r_jso3', 'r_jso2', 'r_SO2_OH', 'r_SO3_H2O',
+  'r_OCS_OH', 'r_SO_BRO','r_SO_CLO','r_SO_NO2','r_SO_O2','r_SO_O3','r_SO_OCLO','r_SO_OH',
+!  'r_g2a_SO2_a1','r_g2a_SO2_a2','r_g2a_SO2_a3',
+!  'r_a2g_SO2_a1','r_a2g_SO2_a2','r_a2g_SO2_a3',
+!  'r_g2a_H2O2_a1','r_g2a_H2O2_a2','r_g2a_H2O2_a3',
+!  'r_a2g_H2O2_a1','r_a2g_H2O2_a2','r_a2g_H2O2_a3',
+!  'r_alwc_SIV_H2O2_a1','r_alwc_SIV_H2O2_a2','r_alwc_SIV_H2O2_a3',
+!  'r_DMS_O3_a1','r_DMSO_OH_a1','r_MSIA_OH_a1','r_MSIA_O3_a1','r_MSA_OH_a1',
+!  'r_DMS_O3_a2','r_DMSO_OH_a2','r_MSIA_OH_a2','r_MSIA_O3_a2','r_MSA_OH_a2',
+!  'r_DMS_O3_a3','r_DMSO_OH_a3','r_MSIA_OH_a3','r_MSIA_O3_a3','r_MSA_OH_a3',
+!  'r_SIV_HOBR_a1','r_SIV_HOBR_a2','r_SIV_HOBR_a3',
+!  'r_SIV_O3_a1', 'r_SIV_O3_a2', 'r_SIV_O3_a3',
+  'SO2', 'TMSO2', 'AQ_SO2', 'GS_SO2', 'DF_SO2', 'CT_SO2', 'SFSO2', 'DSO2CHM', 'SO2_CHMP', 'SO2_CHML', 'WD_SO2',
+  'H2SO4', 'TMH2SO4', 'AQ_H2SO4', 'GS_H2SO4', 'DF_H2SO4', 'CT_H2SO4', 'SFH2SO4', 'DH2SO4CHM', 'H2SO4_CHMP', 'H2SO4_CHML', 'WD_H2SO4',
+  'SO', 'TMSO', 'AQ_SO', 'GS_SO', 'DF_SO', 'CT_SO', 'SFSO', 'DSOCHM', 'SO_CHMP', 'SO_CHML', ! 'WD_SO',
+  'SO3', 'TMSO3', 'AQ_SO3', 'GS_SO3', 'DF_SO3', 'CT_SO3', 'SFSO3', 'DSO3CHM', 'SO3_CHMP', 'SO3_CHML', ! 'WD_SO3',
+  'DMS', 'TMDMS', 'AQ_DMS', 'GS_DMS', 'DF_DMS', 'CT_DMS', 'SFDMS', 'DDMSCHM', 'DMS_CHMP', 'DMS_CHML', 'WD_DMS',
+  'DMSO', 'TMDMSO', 'AQ_DMSO', 'GS_DMSO', 'DF_DMSO', 'CT_DMSO', 'SFDMSO', 'DDMSOCHM', 'DMSO_CHMP', 'DMSO_CHML', 'WD_DMSO',
+  'MSIA', 'TMMSIA', 'AQ_MSIA', 'GS_MSIA', 'DF_MSIA', 'CT_MSIA', 'SFMSIA', 'DMSIACHM', 'MSIA_CHMP', 'MSIA_CHML', 'WD_MSIA',
+  'MSA', 'TMMSA', 'AQ_MSA', 'GS_MSA', 'DF_MSA', 'CT_MSA', 'SFMSA', 'DMSACHM', 'MSA_CHMP', 'MSA_CHML', 'WD_MSA',
+  'so4_a1', 'TMso4_a1', 'AQ_so4_a1', 'GS_so4_a1', 'DF_so4_a1', 'CT_so4_a1', 'SFso4_a1', 'Dso4_a1CHM', 'so4_a1_CHMP', 'so4_a1_CHML', ! 'WD_so4_a1',
+  'so4_a2', 'TMso4_a2', 'AQ_so4_a2', 'GS_so4_a2', 'DF_so4_a2', 'CT_so4_a2', 'SFso4_a2', 'Dso4_a2CHM', 'so4_a2_CHMP', 'so4_a2_CHML', ! 'WD_so4_a2',
+  'so4_a3', 'TMso4_a3', 'AQ_so4_a3', 'GS_so4_a3', 'DF_so4_a3', 'CT_so4_a3', 'SFso4_a3', 'Dso4_a3CHM', 'so4_a3_CHMP', 'so4_a3_CHML', ! 'WD_so4_a3',
+  'SIV_a1', 'TMSIV_a1', 'AQ_SIV_a1', 'GS_SIV_a1', 'DF_SIV_a1', 'CT_SIV_a1', 'SFSIV_a1', 'DSIV_a1CHM', 'SIV_a1_CHMP', 'SIV_a1_CHML', ! 'WD_SIV_a1',
+  'SIV_a2', 'TMSIV_a2', 'AQ_SIV_a2', 'GS_SIV_a2', 'DF_SIV_a2', 'CT_SIV_a2', 'SFSIV_a2', 'DSIV_a2CHM', 'SIV_a2_CHMP', 'SIV_a2_CHML', ! 'WD_SIV_a2',
+  'SIV_a3', 'TMSIV_a3', 'AQ_SIV_a3', 'GS_SIV_a3', 'DF_SIV_a3', 'CT_SIV_a3', 'SFSIV_a3', 'DSIV_a3CHM', 'SIV_a3_CHMP', 'SIV_a3_CHML', ! 'WD_SIV_a3',
+  'DMS_a1', 'TMDMS_a1', 'AQ_DMS_a1', 'GS_DMS_a1', 'DF_DMS_a1', 'CT_DMS_a1', 'SFDMS_a1', 'DDMS_a1CHM', 'DMS_a1_CHMP', 'DMS_a1_CHML', ! 'WD_DMS_a1',
+  'DMS_a2', 'TMDMS_a2', 'AQ_DMS_a2', 'GS_DMS_a2', 'DF_DMS_a2', 'CT_DMS_a2', 'SFDMS_a2', 'DDMS_a2CHM', 'DMS_a2_CHMP', 'DMS_a2_CHML', ! 'WD_DMS_a2',
+  'DMS_a3', 'TMDMS_a3', 'AQ_DMS_a3', 'GS_DMS_a3', 'DF_DMS_a3', 'CT_DMS_a3', 'SFDMS_a3', 'DDMS_a3CHM', 'DMS_a3_CHMP', 'DMS_a3_CHML', ! 'WD_DMS_a3',
+  'DMSO_a1', 'TMDMSO_a1', 'AQ_DMSO_a1', 'GS_DMSO_a1', 'DF_DMSO_a1', 'CT_DMSO_a1', 'SFDMSO_a1', 'DDMSO_a1CHM', 'DMSO_a1_CHMP', 'DMSO_a1_CHML', ! 'WD_DMSO_a1',
+  'DMSO_a2', 'TMDMSO_a2', 'AQ_DMSO_a2', 'GS_DMSO_a2', 'DF_DMSO_a2', 'CT_DMSO_a2', 'SFDMSO_a2', 'DDMSO_a2CHM', 'DMSO_a2_CHMP', 'DMSO_a2_CHML', ! 'WD_DMSO_a2',
+  'DMSO_a3', 'TMDMSO_a3', 'AQ_DMSO_a3', 'GS_DMSO_a3', 'DF_DMSO_a3', 'CT_DMSO_a3', 'SFDMSO_a3', 'DDMSO_a3CHM', 'DMSO_a3_CHMP', 'DMSO_a3_CHML', ! 'WD_DMSO_a3',
+  'MSIA_a1', 'TMMSIA_a1', 'AQ_MSIA_a1', 'GS_MSIA_a1', 'DF_MSIA_a1', 'CT_MSIA_a1', 'SFMSIA_a1', 'DMSIA_a1CHM', 'MSIA_a1_CHMP', 'MSIA_a1_CHML', ! 'WD_MSIA_a1',
+  'MSIA_a2', 'TMMSIA_a2', 'AQ_MSIA_a2', 'GS_MSIA_a2', 'DF_MSIA_a2', 'CT_MSIA_a2', 'SFMSIA_a2', 'DMSIA_a2CHM', 'MSIA_a2_CHMP', 'MSIA_a2_CHML', ! 'WD_MSIA_a2',
+  'MSIA_a3', 'TMMSIA_a3', 'AQ_MSIA_a3', 'GS_MSIA_a3', 'DF_MSIA_a3', 'CT_MSIA_a3', 'SFMSIA_a3', 'DMSIA_a3CHM', 'MSIA_a3_CHMP', 'MSIA_a3_CHML', ! 'WD_MSIA_a3',
+  'MSA_a1', 'TMMSA_a1', 'AQ_MSA_a1', 'GS_MSA_a1', 'DF_MSA_a1', 'CT_MSA_a1', 'SFMSA_a1', 'DMSA_a1CHM', 'MSA_a1_CHMP', 'MSA_a1_CHML', ! 'WD_MSA_a1',
+  'MSA_a2', 'TMMSA_a2', 'AQ_MSA_a2', 'GS_MSA_a2', 'DF_MSA_a2', 'CT_MSA_a2', 'SFMSA_a2', 'DMSA_a2CHM', 'MSA_a2_CHMP', 'MSA_a2_CHML', ! 'WD_MSA_a2',
+  'MSA_a3', 'TMMSA_a3', 'AQ_MSA_a3', 'GS_MSA_a3', 'DF_MSA_a3', 'CT_MSA_a3', 'SFMSA_a3', 'DMSA_a3CHM', 'MSA_a3_CHMP', 'MSA_a3_CHML', ! 'WD_MSA_a3',
+  'OH_a1', 'TMOH_a1', 'AQ_OH_a1', 'GS_OH_a1', 'DF_OH_a1', 'CT_OH_a1', 'SFOH_a1', 'DOH_a1CHM', 'OH_a1_CHMP', 'OH_a1_CHML', ! 'WD_OH_a1',
+  'OH_a2', 'TMOH_a2', 'AQ_OH_a2', 'GS_OH_a2', 'DF_OH_a2', 'CT_OH_a2', 'SFOH_a2', 'DOH_a2CHM', 'OH_a2_CHMP', 'OH_a2_CHML', ! 'WD_OH_a2',
+  'OH_a3', 'TMOH_a3', 'AQ_OH_a3', 'GS_OH_a3', 'DF_OH_a3', 'CT_OH_a3', 'SFOH_a3', 'DOH_a3CHM', 'OH_a3_CHMP', 'OH_a3_CHML', ! 'WD_OH_a3',
+  'O3_a1', 'TMO3_a1', 'AQ_O3_a1', 'GS_O3_a1', 'DF_O3_a1', 'CT_O3_a1', 'SFO3_a1', 'DO3_a1CHM', 'O3_a1_CHMP', 'O3_a1_CHML', ! 'WD_O3_a1',
+  'O3_a2', 'TMO3_a2', 'AQ_O3_a2', 'GS_O3_a2', 'DF_O3_a2', 'CT_O3_a2', 'SFO3_a2', 'DO3_a2CHM', 'O3_a2_CHMP', 'O3_a2_CHML', ! 'WD_O3_a2',
+  'O3_a3', 'TMO3_a3', 'AQ_O3_a3', 'GS_O3_a3', 'DF_O3_a3', 'CT_O3_a3', 'SFO3_a3', 'DO3_a3CHM', 'O3_a3_CHMP', 'O3_a3_CHML', ! 'WD_O3_a3',
+  'HOBR_a1', 'TMHOBR_a1', 'AQ_HOBR_a1', 'GS_HOBR_a1', 'DF_HOBR_a1', 'CT_HOBR_a1', 'SFHOBR_a1', 'DHOBR_a1CHM', 'HOBR_a1_CHMP', 'HOBR_a1_CHML', ! 'WD_HOBR_a1',
+  'HOBR_a2', 'TMHOBR_a2', 'AQ_HOBR_a2', 'GS_HOBR_a2', 'DF_HOBR_a2', 'CT_HOBR_a2', 'SFHOBR_a2', 'DHOBR_a2CHM', 'HOBR_a2_CHMP', 'HOBR_a2_CHML', ! 'WD_HOBR_a2',
+  'HOBR_a3', 'TMHOBR_a3', 'AQ_HOBR_a3', 'GS_HOBR_a3', 'DF_HOBR_a3', 'CT_HOBR_a3', 'SFHOBR_a3', 'DHOBR_a3CHM', 'HOBR_a3_CHMP', 'HOBR_a3_CHML', ! 'WD_HOBR_a3',
+  'so4_a2_CMXF', 'so4_a1_CMXF', 'SO2_CMXF',
+  'aerosol_ph_bin1', 'aerosol_ph_bin2', 'aerosol_ph_bin3', 'aerosol_ph_bin4',
+  'qaerwat_bin1', 'qaerwat_bin2', 'qaerwat_bin3', 'qaerwat_bin4',
+  'OCN_FLUX_DMS', 'Csw_DMS',
+  'so4_c1', 'so4_c2', 'so4_c3',
+  'so4_c1DDF', 'so4_c1SFWET', 'so4_c2DDF', 'so4_c2SFWET', 'so4_c3DDF', 'so4_c3SFWET',
+  'AQ_so4_c1', 'AQ_so4_c2', 'AQ_so4_c3', 
+  'so4_c1AQSO4', 'so4_c1AQH2SO4', 'so4_c2AQSO4', 'so4_c2AQH2SO4', 'so4_c3AQSO4', 'so4_c3AQH2SO4',
+  'so4_a1DDF', 'so4_a1SFWET', 'so4_a2DDF', 'so4_a2SFWET', 'so4_a3DDF', 'so4_a3SFWET',
+  'CH3SCH2OO', 'TMCH3SCH2OO','AQ_CH3SCH2OO','GS_CH3SCH2OO','DF_CH3SCH2OO','SFCH3SCH2OO','WD_CH3SCH2OO',
+  'CH3SCH2O', 'TMCH3SCH2O','AQ_CH3SCH2O','GS_CH3SCH2O','DF_CH3SCH2O','SFCH3SCH2O','WD_CH3SCH2O',
+  'CH3CH3SCL', 'TMCH3CH3SCL','AQ_CH3CH3SCL','GS_CH3CH3SCL','DF_CH3CH3SCL','SFCH3CH3SCL','WD_CH3CH3SCL',
+  'CH3S', 'TMCH3S','AQ_CH3S','GS_CH3S','DF_CH3S','SFCH3S','WD_CH3S',
+  'CH3SO', 'TMCH3SO','AQ_CH3SO','GS_CH3SO','DF_CH3SO','SFCH3SO','WD_CH3SO',
+  'CH3SOO', 'TMCH3SOO','AQ_CH3SOO','GS_CH3SOO','DF_CH3SOO','SFCH3SOO','WD_CH3SOO',
+  'CH3SO2', 'TMCH3SO2','AQ_CH3SO2','GS_CH3SO2','DF_CH3SO2','SFCH3SO2','WD_CH3SO2',
+  'CH3SO3', 'TMCH3SO3','AQ_CH3SO3','GS_CH3SO3','DF_CH3SO3','SFCH3SO3','WD_CH3SO3',
+!  'r_ab_DMS_OH','r_ab_DMS_CL','r_ab_MSP_NO','r_ab_MSP_RO2','r_ab_CH3SCH2O','r_ab_CH3S_O3','r_ab_CH3S_O2', 'r_ab_CH3SO_O3',
+!  'r_ab_CH3SOOa','r_ab_CH3SOOb','r_ab_CH3SO2_O3','r_ab_CH3SO2','r_ab_CH3SO3_HO2','r_ab_CH3SO3','r_ab_CH3CH3SCL',
+!  'r_is_shift_1','r_is_shift_2','r_is_OOCH2SCH2OOH_NO','r_is_HOOCH2SCH2O','r_is_OOCH2SCH2OOH_HO2',
+!  'r_is_HPMTF_OH','r_is_HOOCH2SCO_1','r_is_HOOCH2SCO_2','r_is_HOOCH2S_O3','r_is_HOOCH2S_NO2','r_is_HOOCH2SO_O3','r_is_HOOCH2SO_NO2',
+  'OOCH2SCH2OOH','TMOOCH2SCH2OOH','GS_OOCH2SCH2OOH','DF_OOCH2SCH2OOH','WD_OOCH2SCH2OOH',
+  'HPMTF','TMHPMTF','GS_HPMTF','DF_HPMTF','WD_HPMTF',
+  'HOOCH2SCH2O','TMHOOCH2SCH2O','GS_HOOCH2SCH2O','DF_HOOCH2SCH2O','WD_HOOCH2SCH2O',
+  'HOOCH2S','TMHOOCH2S','GS_HOOCH2S','DF_HOOCH2S','WD_HOOCH2S',
+  'HOOCH2SCH2OOH','TMHOOCH2SCH2OOH','GS_HOOCH2SCH2OOH','DF_HOOCH2SCH2OOH','WD_HOOCH2SCH2OOH',
+  'HOOCH2SCO','TMHOOCH2SCO','GS_HOOCH2SCO','DF_HOOCH2SCO','WD_HOOCH2SCO',
+  'HOOCH2SO','TMHOOCH2SO','GS_HOOCH2SO','DF_HOOCH2SO','WD_HOOCH2SO',
+  'so4_a2_sfnnuc1','NO','TMNO','NO2','TMNO2','NO3','TMNO3','HO2','OH','O3','TMO3','CL','TMCL','BRO','TMBRO',
+  'AREA', 'M_dens', 'T', 'PDELDRY'
+
+! ocean emissions
+bubble_mediated_transfer =    .FALSE.
+ocean_salinity_file =         '/glade/work/vfung/CESM/special_input/OASISS/SSS_recooked_0-360.nc'
+csw_type =                    'CYCLICAL'
+csw_cycle_yr =                2000
+csw_specifier =               'DMS      ->  1.0 */glade/work/vfung/CESM/special_input/OASISS/Csw_DMS_Lana2011_f09f09_1750_2100_20200717a.nc' 
+
+! deposition
+gas_wetdep_list                = 'ALKNIT', 'ALKOOH', 'BENZOOH', 'BRONO2', 'BZOOH', 'C2H5OH', 'C2H5OOH', 'C3H7OOH', 'C6H5OOH', 'CH2O', 'CH3CHO',
+         'CH3CN', 'CH3COCH3', 'CH3COCHO', 'CH3COOH', 'CH3COOOH', 'CH3OH', 'CH3OOH', 'CLONO2', 'COF2', 'COFCL', 'EOOH',
+         'GLYALD', 'H2O2', 'H2SO4', 'HBR', 'HCL', 'HCN', 'HCOOH', 'HF', 'HNO3', 'HO2NO2', 'HOBR',
+         'HOCL', 'HONITR', 'HPALD', 'HYAC', 'HYDRALD', 'IEPOX', 'ISOPNITA', 'ISOPNITB', 'ISOPNO3', 'ISOPNOOH', 'ISOPOOH',
+         'IVOC', 'MACR', 'MACROOH', 'MEKOOH', 'MVK', 'NC4CH2OH', 'NC4CHO', 'NDEP', 'NH3', 'NH4', 'NHDEP',
+         'NOA', 'NTERPOOH', 'ONITR', 'PHENOOH', 'POOH', 'ROOH', 'SO2', 'SOAG0', 'SOAG1', 'SOAG2', 'SOAG3',
+         'SOAG4', 'SVOC', 'TERP2OOH', 'TERPNIT', 'TERPOOH', 'TERPROD1', 'TERPROD2', 'TOLOOH', 'XOOH', 'XYLENOOH', 'XYLOLOOH', 
+         'DMS', 'DMSO', 'MSIA', 'MSA', 
+         'CH3SCH2OO', 'CH3SCH2O', 'CH3S', 'CH3SO', 'CH3SOO', 'CH3SO2', 'CH3SO3', 'CH3CH3SCL',
+         'OOCH2SCH2OOH', 'HPMTF', 'HOOCH2SCH2O', 'HOOCH2S', 'HOOCH2SCH2OOH', 'HOOCH2SCO', 'HOOCH2SO'
+
+drydep_list = 'ALKNIT', 'ALKOOH', 'BENZOOH', 'BZOOH', 'C2H5OH', 'C2H5OOH',
+      'C3H7OOH', 'C6H5OOH', 'CH2O', 'CH3CHO', 'CH3CN', 'CH3COCH3', 'CH3COCHO',
+      'CH3COOH', 'CH3COOOH', 'CH3OH', 'CH3OOH', 'CO', 'EOOH', 'GLYALD', 'H2O2',
+      'H2SO4', 'HCN', 'HCOOH', 'HNO3', 'HO2NO2', 'HONITR', 'HPALD', 'HYAC',
+      'HYDRALD', 'IEPOX', 'ISOPNITA', 'ISOPNITB', 'ISOPNO3', 'ISOPNOOH',
+      'ISOPOOH', 'IVOC', 'MACROOH', 'MEKOOH', 'MPAN', 'NC4CH2OH', 'NC4CHO', 
+      'PHENOOH', 'POOH', 'ROOH', 'SO2', 'SOAG0', 'SOAG1', 'SOAG2', 'SOAG3',
+      'SOAG4', 'SVOC', 'TERP2OOH', 'TERPNIT', 'TERPOOH', 'TERPROD1', 'TERPROD2',
+      'TOLOOH', 'XOOH', 'XYLENOOH', 'XYLOLOOH',
+      'DMS', 'DMSO', 'MSIA', 'MSA',
+      'CH3SCH2OO', 'CH3SCH2O', 'CH3S', 'CH3SO', 'CH3SOO', 'CH3SO2', 'CH3SO3', 'CH3CH3SCL',
+      'OOCH2SCH2OOH', 'HPMTF', 'HOOCH2SCH2O', 'HOOCH2S', 'HOOCH2SCH2OOH', 'HOOCH2SCO', 'HOOCH2SO'
+
+
+! megan
+megan_factors_file = '/glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart/emis/megan21_emis_factors_78pft_c20161108.nc'
+
+! surface emissions
+srf_emis_type         = 'CYCLICAL'
+srf_emis_cycle_yr     = 2000
+
+srf_emis_specifier    =
+      'BIGALK -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_BIGALK_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'BIGALK -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_BIGALK_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'BIGENE -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_BIGENE_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'BIGENE -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_BIGENE_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'C2H2 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C2H2_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'C2H2 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C2H2_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'C2H4 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C2H4_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'C2H4 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C2H4_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'C2H4 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C2H4_other_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'C2H5OH -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C2H5OH_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'C2H5OH -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C2H5OH_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'C2H6 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C2H6_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'C2H6 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C2H6_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'C2H6 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C2H6_other_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'C3H6 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C3H6_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'C3H6 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C3H6_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'C3H6 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C3H6_other_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'C3H8 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C3H8_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'C3H8 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C3H8_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'C3H8 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_C3H8_other_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'CH2O -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CH2O_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'CH2O -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CH2O_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'CH3CHO -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CH3CHO_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'CH3CHO -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CH3CHO_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'CH3CN -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CH3CN_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'CH3CN -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CH3CN_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'CH3COCH3 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CH3COCH3_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'CH3COCH3 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CH3COCH3_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'CH3COCHO -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CH3COCHO_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'CH3COOH -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CH3COOH_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'CH3COOH -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CH3COOH_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'CH3OH -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CH3OH_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'CH3OH -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CH3OH_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'CO -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CO_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'CO -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CO_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'CO -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_CO_other_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'HCN -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_HCN_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'HCN -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_HCN_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'HCOOH -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_HCOOH_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'HCOOH -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_HCOOH_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'ISOP -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_ISOP_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'MEK -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_MEK_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'NH3 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_NH3_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'NH3 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_NH3_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'NH3 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_NH3_other_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'NO -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_NO_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'NO -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_NO_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'NO -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_NO_other_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'TOLUENE -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_TOLUENE_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
+      'TOLUENE -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_TOLUENE_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      ! 'DMS -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_DMS_bb_surface_1750-2015_0.9x1.25_c20170322.nc',
+      ! 'DMS -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_DMS_other_surface_1750-2015_0.9x1.25_c20170322.nc',
+      'SO2 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SO2_anthro-ag-ship-res_surface_1750-2015_0.9x1.25_c20170616.nc',
+      'SO2 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SO2_anthro-ene_surface_1750-2015_0.9x1.25_c20170616.nc',
+      'SO2 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SO2_bb_surface_1750-2015_0.9x1.25_c20170322.nc'
+
+! elevated emissions
+ext_frc_specifier		= 
+        'bc_a4  -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_bc_a4_aircraft_vertical_1750-2015_0.9x1.25_c20170608.nc',
+        'so4_a1 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_so4_a1_anthro-ene_vertical_1750-2015_0.9x1.25_c20170616.nc',
+        'so4_a1 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_so4_a1_contvolcano_vertical_1750-2100_0.9x1.25_c20170322.nc',
+        'so4_a2 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_so4_a2_contvolcano_vertical_1750-2100_0.9x1.25_c20170322.nc',
+        'num_a1 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_num_so4_a1_anthro-ene_vertical_1750-2015_0.9x1.25_c20170616.nc',
+        'num_a1 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_num_so4_a1_contvolcano_vertical_1750-2100_0.9x1.25_c20170322.nc',
+        'num_a2 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_num_so4_a2_contvolcano_vertical_1750-2100_0.9x1.25_c20170322.nc',
+        'num_a4 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_num_bc_a4_aircraft_vertical_1750-2015_0.9x1.25_c20170608.nc',
+        'NO2    -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_NO2_aircraft_vertical_1750-2015_0.9x1.25_c20170608.nc',
+        'SVOC   -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SVOC_bb_vertical_1750-2015_0.9x1.25_c20170322.nc',
+        'SO2    -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SO2_contvolcano_vertical_1750-2100_0.9x1.25_c20170322.nc',
+        'SO2    -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SO2_aircraft_vertical_1750-2015_0.9x1.25_c20170608.nc',
+        'SO2    -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/stratvolc/VolcanEESMv3.10_SO2_1995-2005average_1deg_ZeroTrop_c180912.nc'
+!        'SO2    -> /glade/u/home/vfung/CESM/special_input/VolcanEESMv3.10_SO2_1995-2005average_1deg_ZeroTrop_as1850_c20210203_fkm.nc'
+ext_frc_type		= 'CYCLICAL'
+ext_frc_cycle_yr		= 2000
+
+&chem_surfvals_nl
+ flbc_cycle_yr		= 2000
+ flbc_type        = 'CYCLICAL'
+ flbc_file		= '/glade/p/cesmdata/cseg/inputdata/atm/waccm/lb/LBC_17500116-20150116_CMIP6_0p5degLat_c180227.nc'
+/
+
+&prescribed_strataero_nl
+ prescribed_strataero_cycle_yr		= 2000
+ prescribed_strataero_datapath		= '/glade/p/cesmdata/cseg/inputdata/atm/cam/ozone'
+ prescribed_strataero_file		= 'ozone_strataero_CAM6chem_1849-2014_zm_5day_c170924.nc'
+ prescribed_strataero_type		= 'CYCLICAL'
+ prescribed_strataero_use_chemtrop		= .false.
+/
+
+! prognostic modal sulfate aerosols in the stratosphere?
+modal_strat_sulfate = .false.
+
+&solar_data_opts
+  solar_data_type		= 'FIXED'
+  solar_data_ymd		= 20000101
+  solar_htng_spctrl_scl		= .true.
+  solar_irrad_data_file		= '/glade/p/cesmdata/cseg/inputdata/atm/cam/solar/SolarForcingCMIP6piControl_c160921.nc'
+/
+
+! aerosol-climate  
+chem_rad_passive      = .false.
+
+
+ history_aero_optics            =           .true.
+ history_aerosol                = .false.
+ history_clubb = .true.
+
+mode_defs		= 
+  'mam4_mode1:accum:=',
+    'A:num_a1:N:num_c1:num_mr:+',
+    'A:so4_a1:N:so4_c1:sulfate:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc:+',
+    'A:pom_a1:N:pom_c1:p-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocpho_rrtmg_c130709.nc:+',
+    'A:soa1_a1:N:soa1_c1:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa2_a1:N:soa2_c1:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa3_a1:N:soa3_c1:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa4_a1:N:soa4_c1:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa5_a1:N:soa5_c1:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:bc_a1:N:bc_c1:black-c:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/bcpho_rrtmg_c100508.nc:+',
+    'A:dst_a1:N:dst_c1:dust:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:ncl_a1:N:ncl_c1:seasalt:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc:+',
+    'A:cl_a1:N:cl_c1:chloride:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc:+',
+    'A:no3_a1:N:no3_c1:nitrate:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc:+',
+    'A:ca_a1:N:ca_c1:calcium:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:co3_a1:N:co3_c1:carbonate:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:nh4_a1:N:nh4_c1:ammonium:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc',
+  'mam4_mode2:aitken:=',
+    'A:num_a2:N:num_c2:num_mr:+',
+    'A:so4_a2:N:so4_c2:sulfate:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc:+',
+    'A:soa1_a2:N:soa1_c2:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa2_a2:N:soa2_c2:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa3_a2:N:soa3_c2:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa4_a2:N:soa4_c2:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa5_a2:N:soa5_c2:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:ncl_a2:N:ncl_c2:seasalt:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc:+',
+    'A:dst_a2:N:dst_c2:dust:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:cl_a2:N:cl_c2:chloride:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc:+',
+    'A:co3_a2:N:co3_c2:carbonate:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:no3_a2:N:no3_c2:nitrate:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc:+',
+    'A:ca_a2:N:ca_c2:calcium:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:nh4_a2:N:nh4_c2:ammonium:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc',
+  'mam4_mode3:coarse:=',
+    'A:num_a3:N:num_c3:num_mr:+',
+    'A:dst_a3:N:dst_c3:dust:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:ncl_a3:N:ncl_c3:seasalt:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc:+',
+    'A:so4_a3:N:so4_c3:sulfate:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc:+',
+    'A:ca_a3:N:ca_c3:calcium:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:co3_a3:N:co3_c3:carbonate:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:cl_a3:N:cl_c3:chloride:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc:+',
+    'A:no3_a3:N:no3_c3:nitrate:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc:+',
+    'A:nh4_a3:N:nh4_c3:ammonium:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc',
+  'mam4_mode4:primary_carbon:=',
+    'A:num_a4:N:num_c4:num_mr:+',
+    'A:pom_a4:N:pom_c4:p-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocpho_rrtmg_c130709.nc:+',
+    'A:bc_a4:N:bc_c4:black-c:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/bcpho_rrtmg_c100508.nc',
+  'mam4_mode1_noSO4:accum:=',
+    'A:num_a1:N:num_c1:num_mr:+',
+    'A:pom_a1:N:pom_c1:p-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocpho_rrtmg_c130709.nc:+',
+    'A:soa1_a1:N:soa1_c1:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa2_a1:N:soa2_c1:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa3_a1:N:soa3_c1:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa4_a1:N:soa4_c1:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa5_a1:N:soa5_c1:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:bc_a1:N:bc_c1:black-c:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/bcpho_rrtmg_c100508.nc:+',
+    'A:dst_a1:N:dst_c1:dust:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:ncl_a1:N:ncl_c1:seasalt:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc:+',
+    'A:cl_a1:N:cl_c1:chloride:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc:+',
+    'A:no3_a1:N:no3_c1:nitrate:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc:+',
+    'A:ca_a1:N:ca_c1:calcium:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:co3_a1:N:co3_c1:carbonate:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:nh4_a1:N:nh4_c1:ammonium:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc',
+  'mam4_mode2_noSO4:aitken:=',
+    'A:num_a2:N:num_c2:num_mr:+',
+    'A:soa1_a2:N:soa1_c2:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa2_a2:N:soa2_c2:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa3_a2:N:soa3_c2:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa4_a2:N:soa4_c2:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:soa5_a2:N:soa5_c2:s-organic:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc:+',
+    'A:ncl_a2:N:ncl_c2:seasalt:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc:+',
+    'A:dst_a2:N:dst_c2:dust:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:cl_a2:N:cl_c2:chloride:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc:+',
+    'A:co3_a2:N:co3_c2:carbonate:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:no3_a2:N:no3_c2:nitrate:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc:+',
+    'A:ca_a2:N:ca_c2:calcium:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:nh4_a2:N:nh4_c2:ammonium:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc',
+  'mam4_mode3_noSO4:coarse:=',
+    'A:num_a3:N:num_c3:num_mr:+',
+    'A:dst_a3:N:dst_c3:dust:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:ncl_a3:N:ncl_c3:seasalt:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc:+',
+    'A:ca_a3:N:ca_c3:calcium:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:co3_a3:N:co3_c3:carbonate:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/dust_aeronet_rrtmg_c141106.nc:+',
+    'A:cl_a3:N:cl_c3:chloride:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ssam_rrtmg_c100508.nc:+',
+    'A:no3_a3:N:no3_c3:nitrate:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc:+',
+    'A:nh4_a3:N:nh4_c3:ammonium:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc'
+
+! SO4
+rad_diag_1 = 
+  'A:Q:H2O', 'N:O2:O2',
+  'A:CO2:CO2', 'A:O3:O3',
+  'A:N2O:N2O', 'A:CH4:CH4',
+  'N:CFC11STAR:CFC11', 'A:CFC12:CFC12',
+  'M:mam4_mode1_noSO4:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode1_rrtmg_aeronetdust_sig1.6_dgnh.48_c140304.nc',
+  'M:mam4_mode2_noSO4:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode2_rrtmg_aitkendust_c141106.nc',
+  'M:mam4_mode3_noSO4:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode3_rrtmg_aeronetdust_sig1.2_dgnl.40_c150219.nc',
+  'M:mam4_mode4:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/mam4_mode4_rrtmg_c130628.nc'
+
+! No Aerosols
+rad_diag_9 = 
+  'A:Q:H2O', 'N:O2:O2',
+  'A:CO2:CO2', 'A:O3:O3',
+  'A:N2O:N2O', 'A:CH4:CH4',
+  'N:CFC11STAR:CFC11', 'A:CFC12:CFC12'
+ 
