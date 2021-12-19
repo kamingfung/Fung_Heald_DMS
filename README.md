@@ -12,10 +12,10 @@ To rerun the simulation cases, please follow these steps:
 1. create a case using the standard procedures of CESM from the codebase above.
 2. copy all files to the directory of the created case
 3. modify `env_run.xml` in the case directory accordingly:
-    a. `CLM_BLDNML_OPTS` = `-bgc sp -megan -nofire`
-    b. `CAM_NML_USE_CASE` = `2000_trop_strat_vbs_cam6`
-    c. `CLM_NML_USE_CASE` = `2000_control`
-    d. `CCSM_CO2_PPMV` = `367.0`
-    e. `CLM_CO2_TYPE` = `constant`
+    1. `CLM_BLDNML_OPTS` = `-bgc sp -megan -nofire`
+    2. `CAM_NML_USE_CASE` = `2000_trop_strat_vbs_cam6`
+    3. `CLM_NML_USE_CASE` = `2000_control`
+    4. `CCSM_CO2_PPMV` = `367.0`
+    5. `CLM_CO2_TYPE` = `constant`
 4. modify `env_build.xml` in the case directory accordingly:
-    a. `CAM_CONFIG_OPTS` = `-phys cam6 -chem trop_strat_mam4_vbs -age_of_air_trcs -mosaic -usr_mech_infile {case_dir/SourceMod/chem_mech.in}`
+    1.  `CAM_CONFIG_OPTS` = `-phys cam6 -chem trop_strat_mam4_vbs -age_of_air_trcs -mosaic -usr_mech_infile {case_dir/SourceMod/chem_mech.in}`
