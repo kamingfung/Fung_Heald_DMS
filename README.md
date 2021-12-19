@@ -19,3 +19,6 @@ To rerun the simulation cases, please follow these steps:
     5. `CLM_CO2_TYPE` = `constant`
 4. modify `env_build.xml` in the case directory accordingly:
     1.  `CAM_CONFIG_OPTS` = `-phys cam6 -chem trop_strat_mam4_vbs -age_of_air_trcs -mosaic -usr_mech_infile {case_dir/SourceMod/chem_mech.in}`
+
+---
+For questions, please contact Ka Ming FUNG at kamingfung@mit.edu or kamingfung@link.cuhk.edu.hk.
