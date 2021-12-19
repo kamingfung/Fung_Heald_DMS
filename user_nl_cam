@@ -25,7 +25,7 @@
   'r_g2a_DMSO_a1', 'r_g2a_DMSO_a2', 'r_g2a_DMSO_a3', 'r_a2g_DMSO_a1', 'r_a2g_DMSO_a2', 'r_a2g_DMSO_a3', 
   'r_g2a_MSIA_a1', 'r_g2a_MSIA_a2', 'r_g2a_MSIA_a3', 'r_a2g_MSIA_a1', 'r_a2g_MSIA_a2', 'r_a2g_MSIA_a3', 
   'r_g2a_MSA_a1', 'r_g2a_MSA_a2', 'r_g2a_MSA_a3', 'r_a2g_MSA_a1', 'r_a2g_MSA_a2', 'r_a2g_MSA_a3',
- 'r_DMS_O3_c',
+  'r_DMS_O3_c',
   'r_DMSO_OH_c',
   'r_MSIA_OH_c',
   'r_MSIA_O3_c',
@@ -97,7 +97,6 @@
   'r_ab_CH3SOOa','r_ab_CH3SOOb','r_ab_CH3SO2_O3','r_ab_CH3SO2','r_ab_CH3SO3_HO2','r_ab_CH3SO3','r_ab_CH3CH3SCL',
   'r_is_shift_1','r_is_shift_2','r_is_OOCH2SCH2OOH_NO','r_is_HOOCH2SCH2O','r_is_OOCH2SCH2OOH_HO2',
   'r_is_HPMTF_OH','r_is_HOOCH2SCO_1','r_is_HOOCH2SCO_2','r_is_HOOCH2S_O3','r_is_HOOCH2S_NO2','r_is_HOOCH2SO_O3','r_is_HOOCH2SO_NO2',
-!   'r_is_HPMTF_cloud',
   'OOCH2SCH2OOH','TMOOCH2SCH2OOH','GS_OOCH2SCH2OOH','DF_OOCH2SCH2OOH','WD_OOCH2SCH2OOH',
   'HPMTF','TMHPMTF','GS_HPMTF','DF_HPMTF','WD_HPMTF',
   'HOOCH2SCH2O','TMHOOCH2SCH2O','GS_HOOCH2SCH2O','DF_HOOCH2SCH2O','WD_HOOCH2SCH2O',
@@ -148,12 +147,13 @@ drydep_list = 'ALKNIT', 'ALKOOH', 'BENZOOH', 'BZOOH', 'C2H5OH', 'C2H5OOH',
       'CH3SCH2OO', 'CH3SCH2O', 'CH3S', 'CH3SO', 'CH3SOO', 'CH3SO2', 'CH3SO3', 'CH3CH3SCL',
       'OOCH2SCH2OOH', 'HPMTF', 'HOOCH2SCH2O', 'HOOCH2S', 'HOOCH2SCH2OOH', 'HOOCH2SCO', 'HOOCH2SO'
 
+
 ! megan
 megan_factors_file = '/glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart/emis/megan21_emis_factors_78pft_c20161108.nc'
 
 ! surface emissions
 srf_emis_type         = 'CYCLICAL'
-srf_emis_cycle_yr     = 2000
+srf_emis_cycle_yr     = 1850
 
 srf_emis_specifier    =
       'BIGALK -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_BIGALK_anthro_surface_1750-2015_0.9x1.25_c20170608.nc',
@@ -226,10 +226,9 @@ ext_frc_specifier		=
         'SVOC   -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SVOC_bb_vertical_1750-2015_0.9x1.25_c20170322.nc',
         'SO2    -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SO2_contvolcano_vertical_1750-2100_0.9x1.25_c20170322.nc',
         'SO2    -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/CMIP6_emissions_1750_2015/emissions-cmip6_SO2_aircraft_vertical_1750-2015_0.9x1.25_c20170608.nc',
-        'SO2    -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/stratvolc/VolcanEESMv3.10_SO2_1995-2005average_1deg_ZeroTrop_c180912.nc'
-!        'SO2    -> /glade/u/home/vfung/CESM/special_input/VolcanEESMv3.10_SO2_1995-2005average_1deg_ZeroTrop_as1850_c20210203_fkm.nc'
+        'SO2    -> /glade/u/home/vfung/CESM/special_input/VolcanEESMv3.10_SO2_1995-2005average_1deg_ZeroTrop_as1850_c20210203_fkm.nc'
 ext_frc_type		= 'CYCLICAL'
-ext_frc_cycle_yr		= 2000
+ext_frc_cycle_yr		= 1850
 
 &chem_surfvals_nl
  flbc_cycle_yr		= 2000
@@ -238,7 +237,7 @@ ext_frc_cycle_yr		= 2000
 /
 
 &prescribed_strataero_nl
- prescribed_strataero_cycle_yr		= 2000
+ prescribed_strataero_cycle_yr		= 1850
  prescribed_strataero_datapath		= '/glade/p/cesmdata/cseg/inputdata/atm/cam/ozone'
  prescribed_strataero_file		= 'ozone_strataero_CAM6chem_1849-2014_zm_5day_c170924.nc'
  prescribed_strataero_type		= 'CYCLICAL'

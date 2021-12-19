@@ -1744,11 +1744,6 @@ contains
     msia_c_ndx    = get_spc_ndx('MSIA_c')   ! added by fkm for cloud dep
     msa_c_ndx     = get_spc_ndx('MSA_c')    ! added by fkm for cloud dep
     
-    dms_a1_dd      = has_drydep('DMS_a1')     ! added by fkm for cloud dep
-    dmso_a1_dd     = has_drydep('DMSO_a1')    ! added by fkm for cloud dep
-    msia_a1_dd     = has_drydep('MSIA_a1')    ! added by fkm for cloud dep
-    msa_a1_dd      = has_drydep('MSA_a1')     ! added by fkm for cloud dep
-    
     ! ===== [BEG: added by fkm for H abstraction] =====
     CH3SCH2OO_ndx = get_spc_ndx('CH3SCH2OO')
     CH3SCH2O_ndx  = get_spc_ndx('CH3SCH2O')
