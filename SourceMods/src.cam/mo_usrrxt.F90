@@ -795,70 +795,26 @@ contains
        sqrt_t(:)         = sqrt( temp(:ncol,k) )
        sqrt_t_58(:)      = sqrt( temp(:ncol,k) / 58.0_r8 )
        
-       ! write(iulog,*) 'fkmmm: starts of the new codes'
-       ! temp_1d(:)        = temp (:ncol,k)    ! added by fkm for Phase Transfer; 1-D temperature
-       
-       ! ===================================
-       ! WSY for Phase Transfer: phase-transfer on wet aerosols
-       ! Siyuan Wang (siyuan@ucar.edu)
-       ! ===================================
-       ! alwc_vol_vol_a1(:) = 1.0e-12_r8            ! fixed value for testing...
-       ! alwc_vol_vol_a2(:) = 1.0e-12_r8            ! fixed value for testing...
-       ! alwc_vol_vol_a3(:) = 1.0e-12_r8            ! fixed value for testing...
-       ! alwc_vol_vol(:) = cwat(:,k) * invariants(:,k,inv_m_ndx) / invariants(:,k,inv_h2o_ndx)   ! fkm for Phase Transfer; convert kg-water/kg-air -> cm^3-water / cm^3-air
-       
        lwc(:) = cwat(:ncol,k) * invariants(:ncol,k,inv_m_ndx) / avo * mbar(:ncol,k) !PJC convert kg/kg to g/cm3
-       ! write(iulog,*) 'fkmmm: Phase Transfer; before LWC', lwc
         
        ! Seinfield Ch.7 Eq (7.1) w_L (vol water / vol air ) = 1e-6 * L[g m^-3] = lwc which is Liquid water contain in [g cm^-3]
        alwc_vol_vol_a1(:) = max( 1.0e-12_r8, lwc(:) )  ! fkm for Phase Transfer; use small_value to avoid 1/0 = NaN
        alwc_vol_vol_a2(:) = max( 1.0e-12_r8, lwc(:) )  ! fkm for Phase Transfer
        alwc_vol_vol_a3(:) = max( 1.0e-12_r8, lwc(:) )  ! fkm for Phase Transfer
        
-       ! alwc_vol_vol_a1(:) = max( small_value, h2ovmr(:,k) )  ! fkm for Phase Transfer; use small_value to avoid 1/0 = NaN
-       ! alwc_vol_vol_a2(:) = max( small_value, h2ovmr(:,k) )  ! fkm for Phase Transfer
-       ! alwc_vol_vol_a3(:) = max( small_value, h2ovmr(:,k) )  ! fkm for Phase Transfer
-       
-       ! fkm qaerwat
-       ! alwc_vol_vol_a1(:) = max( 1.0e-12_r8, qaerwat(:ncol, k, 1) ) ! fkm for Phase Transfer; use small_value to avoid 1/0 = NaN
-       ! alwc_vol_vol_a2(:) = max( 1.0e-12_r8, qaerwat(:ncol, k, 2) ) ! fkm for Phase Transfer; use small_value to avoid 1/0 = NaN
-       ! alwc_vol_vol_a3(:) = max( 1.0e-12_r8, qaerwat(:ncol, k, 3) ) ! fkm for Phase Transfer; use small_value to avoid 1/0 = NaN
-       ! write(iulog,*) 'fkmmm: after alwc_vol_vol, alwc_vol_vol_a1 = ', alwc_vol_vol_a1(:)
-       
        radius_cm_a1(:) = 0.5_r8*dgncur_awet(1:ncol,k,1) * 1.e-2_r8   ! fkm for Phase Transfer; radius of wet aerosol = geometric mean wet diameter for number distribution (m -> cm)
        radius_cm_a2(:) = 0.5_r8*dgncur_awet(1:ncol,k,2) * 1.e-2_r8   ! fkm for Phase Transfer; radius of wet aerosol = geometric mean wet diameter for number distribution (m -> cm)
        radius_cm_a3(:) = 0.5_r8*dgncur_awet(1:ncol,k,3) * 1.e-2_r8   ! fkm for Phase Transfer; radius of wet aerosol = geometric mean wet diameter for number distribution (m -> cm)
-
-       ! write(iulog,*) 'calculating radius, radius_cm_a2 = ', radius_cm_a2
-       ! radius_cm_a1(:) = 1.e-5_r8
-       ! radius_cm_a2(:) = 1.e-5_r8
-       ! radius_cm_a3(:) = 1.e-5_r8
        
        ! fkm for MOSAIC pH
-       ! ph_a2(:) = 4.5_r8
-       ! pH_a1(:) = min(14._r8, max(0.0_r8, MOSAIC_pH(1:ncol,k,1)) )
-       ! pH_a2(:) = min(14._r8, max(0.0_r8, MOSAIC_pH(1:ncol,k,2)) )
-       ! pH_a2(:) = min(14._r8, max(0.0_r8, MOSAIC_pH(1:ncol,k,3)) )
-       ! pH_a1(:) = pH_buf(1:ncol,k,1)
-!       pH_a2(:) = MOSAIC_pH(1:ncol,k,2)
-       ! pH_a3(:) = max(1.0_r8, MOSAIC_pH(1:ncol,k,3))
-       
        pH_a1(:) = pH_buf(1:ncol,k,1)
        pH_a2(:) = pH_buf(1:ncol,k,2)
        pH_a3(:) = pH_buf(1:ncol,k,3)
- 
-       ! write(iulog,*) 'calculating pH, pH = ', pH
-       
-       ! conv_aq_rate_coeff_a1(:) = (avo / 1000.0_r8 * alwc_vol_vol_a1(:))	
-       ! conv_aq_rate_coeff_a2(:) = (avo / 1000.0_r8 * alwc_vol_vol_a1(:))	
-       ! conv_aq_rate_coeff_a3(:) = (avo / 1000.0_r8 * alwc_vol_vol_a1(:))	
        
        ! fkm for Phaes Transfer; converting the rates of n-th order reactions from M^(1-n) s^-1 to (molecules cm^-3)^(1-n) s^-1
        conv_aq_rate_coeff_a1(:) = 1.e3_r8 / (avo * alwc_vol_vol_a1(:)) 
        conv_aq_rate_coeff_a2(:) = 1.e3_r8 / (avo * alwc_vol_vol_a2(:))
        conv_aq_rate_coeff_a3(:) = 1.e3_r8 / (avo * alwc_vol_vol_a3(:))
-       
-       ! write(iulog,*) 'calculating conv_aq_rate_coeff_a1'
 
        ! ----------------------------------------
        ! WSY for Phase Transfer: phase-transfer on wet aerosols: SO2
@@ -882,9 +838,6 @@ contains
            heff_M_atm_a3(i) = heff_acid_lookup("SO2             ", temp (i,k), pH_a3(i), .true.)  ! make sure the lenth of the input string is 16
          enddo
          
-         ! heff_M_atm(:) = 100.0_r8              ! fixed value for testing...
-         ! heff_M_atm(:) = 10000.0_r8            ! fixed value for testing...
-         ! heff_M_atm(:) = 1000000.0_r8          ! fixed value for testing...
          rxt(:,k,g2a_SO2_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a1(:)
          rxt(:,k,a2g_SO2_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a1(:) / temp(:,k) / R_atm_per_K_per_M
          rxt(:,k,g2a_SO2_a2_ndx) = kt_s_wetaerosols(ncol, radius_cm_a2(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a2(:)
@@ -928,10 +881,6 @@ contains
          heff_M_atm_a3(i) = heff_acid_lookup("H2O2            ", temp (i,k), pH_a3(i), .true.)  ! make sure the lenth of the input string is 16
        enddo
        
-       ! write(iulog,*) 'fkm: before calculating rxt for g2a, a2g H2O2_a'
-       ! heff_M_atm(:) = 100.0_r8              ! fixed value for testing...
-       ! heff_M_atm(:) = 10000.0_r8            ! fixed value for testing...
-       ! heff_M_atm(:) = 1000000.0_r8          ! fixed value for testing...
        rxt(:,k,g2a_H2O2_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a1(:)
        rxt(:,k,a2g_H2O2_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a1(:) / temp (:ncol,k) / R_atm_per_K_per_M
        rxt(:,k,g2a_H2O2_a2_ndx) = kt_s_wetaerosols(ncol, radius_cm_a2(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a2(:)
@@ -975,15 +924,12 @@ contains
          heff_M_atm_a3(i) = heff_acid_lookup("OH              ", temp (i,k), pH_a3(i), .true.)  ! make sure the lenth of the input string is 16
        enddo
        
-       ! write(iulog,*) 'before calculating rxt for g2a, a2g OH_a'
        rxt(:,k,g2a_OH_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a1(:)
        rxt(:,k,a2g_OH_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a1(:) / temp (:ncol,k) / R_atm_per_K_per_M
        rxt(:,k,g2a_OH_a2_ndx) = kt_s_wetaerosols(ncol, radius_cm_a2(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a2(:)
        rxt(:,k,a2g_OH_a2_ndx) = kt_s_wetaerosols(ncol, radius_cm_a2(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a2(:) / temp (:ncol,k) / R_atm_per_K_per_M
        rxt(:,k,g2a_OH_a3_ndx) = kt_s_wetaerosols(ncol, radius_cm_a3(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a3(:)
        rxt(:,k,a2g_OH_a3_ndx) = kt_s_wetaerosols(ncol, radius_cm_a3(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a3(:) / temp (:ncol,k) / R_atm_per_K_per_M
-       
-       ! write(iulog,*) 'after calculating rxt for g2a, a2g OH_a'
        
        do i = 1,ncol
          if (temp (i,k)<=273.15_r8) then
@@ -995,8 +941,6 @@ contains
            rxt(i,k,a2g_OH_a3_ndx) = 0.0_r8
          end if
        end do
-      
-       ! write(iulog,*) 'fkm: before calculating rxt for g2a, a2g OH_a', rxt(i,k,g2a_OH_a3_ndx)
        
      end if
      
@@ -1021,15 +965,12 @@ contains
          heff_M_atm_a3(i) = heff_acid_lookup("OX              ", temp (i,k), pH_a3(i), .true.)  ! make sure the lenth of the input string is 16
        enddo
        
-       ! write(iulog,*) 'before calculating rxt for g2a, a2g O3_a'
        rxt(:,k,g2a_O3_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a1(:)
        rxt(:,k,a2g_O3_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a1(:) / temp (:ncol,k) / R_atm_per_K_per_M
        rxt(:,k,g2a_O3_a2_ndx) = kt_s_wetaerosols(ncol, radius_cm_a2(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a2(:)
        rxt(:,k,a2g_O3_a2_ndx) = kt_s_wetaerosols(ncol, radius_cm_a2(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a2(:) / temp (:ncol,k) / R_atm_per_K_per_M
        rxt(:,k,g2a_O3_a3_ndx) = kt_s_wetaerosols(ncol, radius_cm_a3(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a3(:)
        rxt(:,k,a2g_O3_a3_ndx) = kt_s_wetaerosols(ncol, radius_cm_a3(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a3(:) / temp (:ncol,k) / R_atm_per_K_per_M
-       
-       ! write(iulog,*) 'after calculating rxt for g2a, a2g O3_a'
        
        do i = 1,ncol
          if (temp (i,k)<=273.15_r8) then
@@ -1041,8 +982,6 @@ contains
            rxt(i,k,a2g_O3_a3_ndx) = 0.0_r8
          end if
        end do
-       
-      ! write(iulog,*) 'fkm: before calculating rxt for g2a, a2g O3_a', rxt(i,k,g2a_O3_a3_ndx)
        
      end if
      
@@ -1067,15 +1006,12 @@ contains
          heff_M_atm_a3(i) = heff_acid_lookup("DMS             ", temp (i,k), pH_a3(i), .true.)  ! make sure the lenth of the input string is 16
        enddo
        
-       ! write(iulog,*) 'before calculating rxt for g2a, a2g DMS_a'
        rxt(:,k,g2a_DMS_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a1(:)
        rxt(:,k,a2g_DMS_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a1(:) / temp (:ncol,k) / R_atm_per_K_per_M
        rxt(:,k,g2a_DMS_a2_ndx) = kt_s_wetaerosols(ncol, radius_cm_a2(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a2(:)
        rxt(:,k,a2g_DMS_a2_ndx) = kt_s_wetaerosols(ncol, radius_cm_a2(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a2(:) / temp (:ncol,k) / R_atm_per_K_per_M
        rxt(:,k,g2a_DMS_a3_ndx) = kt_s_wetaerosols(ncol, radius_cm_a3(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a3(:)
        rxt(:,k,a2g_DMS_a3_ndx) = kt_s_wetaerosols(ncol, radius_cm_a3(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a3(:) / temp (:ncol,k) / R_atm_per_K_per_M
-       
-       ! write(iulog,*) 'after calculating rxt for g2a, a2g DMS_a'
        
        do i = 1,ncol
          if (temp (i,k)<=273.15_r8) then
@@ -1087,8 +1023,7 @@ contains
            rxt(i,k,a2g_DMS_a3_ndx) = 0.0_r8
          end if
        end do
-       ! write(iulog,*) 'fkm: before calculating rxt for g2a, a2g DMS_a',rxt(i,k,g2a_DMS_a2_ndx)
-       
+
      end if
      
      ! ----------------------------------------
@@ -1112,15 +1047,12 @@ contains
          heff_M_atm_a3(i) = heff_acid_lookup("DMSO            ", temp (i,k), pH_a3(i), .true.)  ! make sure the lenth of the input string is 16
        enddo
        
-       ! write(iulog,*) 'before calculating rxt for g2a, a2g DMSO_a'
        rxt(:,k,g2a_DMSO_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a1(:)
        rxt(:,k,a2g_DMSO_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a1(:) / temp (:ncol,k) / R_atm_per_K_per_M
        rxt(:,k,g2a_DMSO_a2_ndx) = kt_s_wetaerosols(ncol, radius_cm_a2(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a2(:)
        rxt(:,k,a2g_DMSO_a2_ndx) = kt_s_wetaerosols(ncol, radius_cm_a2(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a2(:) / temp (:ncol,k) / R_atm_per_K_per_M
        rxt(:,k,g2a_DMSO_a3_ndx) = kt_s_wetaerosols(ncol, radius_cm_a3(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a3(:)
        rxt(:,k,a2g_DMSO_a3_ndx) = kt_s_wetaerosols(ncol, radius_cm_a3(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a3(:) / temp (:ncol,k) / R_atm_per_K_per_M
-       
-       ! write(iulog,*) 'after calculating rxt for g2a, a2g DMSO_a'
        
        do i = 1,ncol
          if (temp (i,k)<=273.15_r8) then
@@ -1132,8 +1064,6 @@ contains
            rxt(i,k,a2g_DMSO_a3_ndx) = 0.0_r8
          end if
        end do
-       
-       ! write(iulog,*) 'fkm: before calculating rxt for g2a, a2g DMSO_a', rxt(i,k,g2a_DMSO_a2_ndx)
        
      end if
      
@@ -1158,15 +1088,12 @@ contains
          heff_M_atm_a3(i) = heff_acid_lookup("MSIA            ", temp (i,k), pH_a3(i), .true.)  ! make sure the lenth of the input string is 16
        enddo
        
-       ! write(iulog,*) 'before calculating rxt for g2a, a2g MSIA_a'
        rxt(:,k,g2a_MSIA_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a1(:)
        rxt(:,k,a2g_MSIA_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a1(:) / temp (:ncol,k) / R_atm_per_K_per_M
        rxt(:,k,g2a_MSIA_a2_ndx) = kt_s_wetaerosols(ncol, radius_cm_a2(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a2(:)
        rxt(:,k,a2g_MSIA_a2_ndx) = kt_s_wetaerosols(ncol, radius_cm_a2(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a2(:) / temp (:ncol,k) / R_atm_per_K_per_M
        rxt(:,k,g2a_MSIA_a3_ndx) = kt_s_wetaerosols(ncol, radius_cm_a3(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a3(:)
        rxt(:,k,a2g_MSIA_a3_ndx) = kt_s_wetaerosols(ncol, radius_cm_a3(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a3(:) / temp (:ncol,k) / R_atm_per_K_per_M
-       
-       ! write(iulog,*) 'after calculating rxt for g2a, a2g MSIA_a'
        
        do i = 1,ncol
          if (temp (i,k)<=273.15_r8) then
@@ -1178,8 +1105,6 @@ contains
            rxt(i,k,a2g_MSIA_a3_ndx) = 0.0_r8
          end if
        end do
-       
-       ! write(iulog,*) 'fkm: before calculating rxt for g2a, a2g MSIA_a', rxt(i,k,a2g_MSIA_a2_ndx)
        
      end if
      
@@ -1204,15 +1129,12 @@ contains
          heff_M_atm_a3(i) = heff_acid_lookup("MSA             ", temp (i,k), pH_a3(i), .true.)  ! make sure the lenth of the input string is 16
        enddo
        
-       ! write(iulog,*) 'before calculating rxt for g2a, a2g MSA_a'
        rxt(:,k,g2a_MSA_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a1(:)
        rxt(:,k,a2g_MSA_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a1(:) / temp (:ncol,k) / R_atm_per_K_per_M
        rxt(:,k,g2a_MSA_a2_ndx) = kt_s_wetaerosols(ncol, radius_cm_a2(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a2(:)
        rxt(:,k,a2g_MSA_a2_ndx) = kt_s_wetaerosols(ncol, radius_cm_a2(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a2(:) / temp (:ncol,k) / R_atm_per_K_per_M
        rxt(:,k,g2a_MSA_a3_ndx) = kt_s_wetaerosols(ncol, radius_cm_a3(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a3(:)
        rxt(:,k,a2g_MSA_a3_ndx) = kt_s_wetaerosols(ncol, radius_cm_a3(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a3(:) / temp (:ncol,k) / R_atm_per_K_per_M
-       
-       ! write(iulog,*) 'after calculating rxt for g2a, a2g MSA_a'
        
        do i = 1,ncol
          if (temp (i,k)<=273.15_r8) then
@@ -1224,8 +1146,6 @@ contains
            rxt(i,k,a2g_MSA_a3_ndx) = 0.0_r8
          end if
        end do
-       
-     ! write(iulog,*) 'fkm: before calculating rxt for g2a, a2g MSA_a', rxt(i,k,a2g_MSA_a3_ndx)
        
      end if
      
@@ -1250,7 +1170,6 @@ contains
          heff_M_atm_a3(i) = heff_acid_lookup("HOBR            ", temp (i,k), pH_a3(i), .true.)  ! make sure the lenth of the input string is 16
        enddo
        
-       ! write(iulog,*) 'before calculating rxt for g2a, a2g HOBR_a'
        rxt(:,k,g2a_HOBR_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a1(:)
        rxt(:,k,a2g_HOBR_a1_ndx) = kt_s_wetaerosols(ncol, radius_cm_a1(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) / heff_M_atm_a1(:) / temp (:ncol,k) / R_atm_per_K_per_M
        rxt(:,k,g2a_HOBR_a2_ndx) = kt_s_wetaerosols(ncol, radius_cm_a2(:), dg, thermalspeed_cm_s(:), mass_accommodation_coeff) * alwc_vol_vol_a2(:)
@@ -1268,7 +1187,6 @@ contains
            rxt(i,k,a2g_HOBR_a3_ndx) = 0.0_r8
          end if
        end do
-     ! write(iulog,*) 'fkm: before calculating rxt for g2a, a2g HOBR_a', rxt(i,k,g2a_HOBR_a2_ndx)
 
      end if
    
@@ -1292,14 +1210,8 @@ contains
        rxt(i,k,alwc_SIV_H2O2_a1_ndx) = k_H2O2_SO2_M_s(pH_a1(i), temp (i,k)) * conv_aq_rate_coeff_a1(i)
        rxt(i,k,alwc_SIV_H2O2_a2_ndx) = k_H2O2_SO2_M_s(pH_a2(i), temp (i,k)) * conv_aq_rate_coeff_a2(i)
        rxt(i,k,alwc_SIV_H2O2_a3_ndx) = k_H2O2_SO2_M_s(pH_a3(i), temp (i,k)) * conv_aq_rate_coeff_a3(i)
-       
-       ! rxt(i,k,alwc_SIV_H2O2_a1_ndx) = 1.e-9_r8
-       ! rxt(i,k,alwc_SIV_H2O2_a2_ndx) = 1.e-9_r8
-       ! rxt(i,k,alwc_SIV_H2O2_a3_ndx) = 1.e-9_r8
-       ! write(iulog,*) 'after calculating rxt for SO2_a and H2O2_a',rxt(i,k,alwc_SIV_H2O2_a1_ndx) ,rxt(i,k,alwc_SIV_H2O2_a2_ndx) ,rxt(i,k,alwc_SIV_H2O2_a3_ndx) 
+
      end do
-     
-     ! write(iulog,*) 'fkm: calculating rxt for SO2_a + H2O2_a', rxt(i,k,alwc_SIV_H2O2_a3_ndx)
      
    end if
    
@@ -1315,8 +1227,6 @@ contains
        rxt(i,k,DMS_O3_a3_ndx) = k_DMS_O3_M_s(pH_a3(i), temp (i,k)) * conv_aq_rate_coeff_a3(i)
      end do
      
-     ! write(iulog,*) 'fkm: calculating rxt for DMS + O3', rxt(i,k,DMS_O3_a2_ndx)
-     
    end if
    
    ! ===================================================================================
@@ -1330,8 +1240,6 @@ contains
        rxt(i,k,DMSO_OH_a2_ndx) = k_DMSO_OH_M_s(pH_a2(i), temp (i,k)) * conv_aq_rate_coeff_a2(i)
        rxt(i,k,DMSO_OH_a3_ndx) = k_DMSO_OH_M_s(pH_a3(i), temp (i,k)) * conv_aq_rate_coeff_a3(i)
      end do
-     
-     ! write(iulog,*) 'fkm: calculating rxt for DMSO + OH', rxt(i,k,DMSO_OH_a3_ndx)
      
    end if
    
@@ -1348,8 +1256,6 @@ contains
        rxt(i,k,MSIA_OH_a3_ndx) = k_MSIA_OH_M_s(pH_a3(i), temp (i,k)) * conv_aq_rate_coeff_a3(i)
      end do
      
-     ! write(iulog,*) 'fkm: calculating rxt for MSIA + OH', rxt(i,k,MSIA_OH_a3_ndx)
-     
    end if
    
    ! ===================================================================================
@@ -1364,8 +1270,6 @@ contains
        rxt(i,k,MSIA_O3_a2_ndx) = k_MSIA_O3_M_s(pH_a2(i), temp (i,k)) * conv_aq_rate_coeff_a2(i)
        rxt(i,k,MSIA_O3_a3_ndx) = k_MSIA_O3_M_s(pH_a3(i), temp (i,k)) * conv_aq_rate_coeff_a3(i)
      end do
-     
-     ! write(iulog,*) 'fkm: calculating rxt for MSIA + O3', rxt(i,k,MSIA_O3_a1_ndx)
      
    end if
    
@@ -1382,8 +1286,6 @@ contains
        rxt(i,k,MSA_OH_a3_ndx) = k_MSA_OH_M_s(pH_a3(i), temp (i,k)) * conv_aq_rate_coeff_a3(i)
      end do
      
-     ! write(iulog,*) 'before calculating rxt for MSA + OH', rxt(i,k,MSA_OH_a2_ndx)
-     
    end if
    
    ! ===================================================================================
@@ -1399,8 +1301,6 @@ contains
        rxt(i,k,SIV_HOBR_a3_ndx) = k_SIV_HOBR_M_s(pH_a3(i), temp (i,k)) * conv_aq_rate_coeff_a3(i)
      end do
      
-     ! write(iulog,*) 'before calculating rxt for S(IV) + HOBr', rxt(i,k,SIV_HOBR_a3_ndx)
-     
    end if
    
    ! ===================================================================================
@@ -1415,8 +1315,6 @@ contains
        rxt(i,k,SIV_O3_a2_ndx) = k_SIV_O3_M_s(pH_a2(i), temp (i,k)) * conv_aq_rate_coeff_a2(i)
        rxt(i,k,SIV_O3_a3_ndx) = k_SIV_O3_M_s(pH_a3(i), temp (i,k)) * conv_aq_rate_coeff_a3(i)
      end do
-     
-     ! write(iulog,*) 'before calculating rxt for S(IV) + O3', rxt(i,k,SIV_O3_a3_ndx)
      
    end if
 
@@ -2475,9 +2373,7 @@ contains
         else
           heff_acid_lookup = kh * (1.0_r8 + k1*aH/k2)                  ! base formulation
         end if
-        ! write(*,*) "--- species: ", trim(SpeciesName), trim(species_name_table(i))
-        ! write(*,*) "--- h298:    ", dheff((i-1)*6+1)
-        ! write(*,*) "--- dhr:     ", dheff((i-1)*6+2)
+
         exit
       end if
     end do
@@ -2502,10 +2398,6 @@ contains
     f_HSO3m = K1_SO2*aH / (aH*aH + K1_SO2*aH + K1_SO2*K2_SO2)
     k_H2O2_SO2_M_s = 7.45E+7_r8 * aH / (1.0_r8 + 13.0_r8*aH) * f_HSO3m 
     
-    ! if (temp_k<=273.15_r8) then
-    !   k_H2O2_SO2_M_s = 0.0_r8
-    ! end if
-    
   endfunction k_H2O2_SO2_M_s
   
   ! ---------------------------------------------
@@ -2526,10 +2418,6 @@ contains
     EaR  = -2600._r8
     k_DMS_O3_M_s = k298 * EXP( -EaR * (1._r8 / temp_k - 1._r8 / 298._r8) )
     
-    ! if (temp_k<=273.15_r8) then
-    !   k_DMS_O3_M_s = 0.0_r8
-    ! end if
-    
   endfunction k_DMS_O3_M_s
   
   ! ---------------------------------------------
@@ -2549,10 +2437,6 @@ contains
     k298 = 6.63e9_r8
     EaR  = -1270._r8
     k_DMSO_OH_M_s = k298 * EXP( -EaR * (1._r8 / temp_k - 1._r8 / 298._r8) )
-    
-    ! if (temp_k<=273.15_r8) then
-    !   k_DMSO_OH_M_s = 0.0_r8
-    ! end if
     
   endfunction k_DMSO_OH_M_s
   
@@ -2581,10 +2465,6 @@ contains
     H    = 10.0_r8**(-1.0_r8*pH)
     k_MSIA_OH_M_s = k298 * EXP( -EaR * (1._r8 / temp_k - 1._r8 / 298._r8) ) + &
                          k1 * EXP( -EaR1 * (1._r8 / temp_k - 1._r8 / 298._r8) ) * Ka / (Ka + H)
-                         
-    ! if (temp_k<=273.15_r8) then
-    !   k_MSIA_OH_M_s = 0.0_r8
-    ! end if
     
   endfunction k_MSIA_OH_M_s
   
@@ -2613,10 +2493,6 @@ contains
     H    = 10.0_r8**(-1.0_r8*pH)
     k_MSIA_O3_M_s = k298 * EXP( -EaR * (1._r8 / temp_k - 1._r8 / 298._r8) ) + &
                          k1 * EXP( -EaR1 * (1._r8 / temp_k - 1._r8 / 298._r8) ) * Ka / (Ka + H)
-                         
-    ! if (temp_k<=273.15_r8) then
-    !   k_MSIA_O3_M_s = 0.0_r8
-    ! end if
     
   endfunction k_MSIA_O3_M_s
   
@@ -2645,10 +2521,6 @@ contains
     H    = 10.0_r8**(-1.0_r8*pH)
     k_MSA_OH_M_s = k298 * EXP( -EaR * (1._r8 / temp_k - 1._r8 / 298._r8) ) + &
                          k1 * EXP( -EaR1 * (1._r8 / temp_k - 1._r8 / 298._r8) ) * Ka / (Ka + H)
-                         
-    ! if (temp_k<=273.15_r8) then
-    !   k_MSA_OH_M_s = 0.0_r8
-    ! end if
     
   endfunction k_MSA_OH_M_s
   
@@ -2679,10 +2551,6 @@ contains
     k_SIV_HOBR_M_s = ( ( k298 * EXP( -EaR * (1._r8 / temp_k - 1._r8 / 298._r8) ) * Ka1 / H )    + &
                       ( k1 * EXP( -EaR1 * (1._r8 / temp_k - 1._r8 / 298._r8) ) * (Ka1 * Ka2 / H**2) )  & 
                       ) / (1 + Ka1 / H + Ka1 * Ka2 / H**2)
-                      
-    ! if (temp_k<=273.15_r8) then
-    !   k_SIV_HOBR_M_s = 0.0_r8
-    ! end if
     
   endfunction k_SIV_HOBR_M_s
   
@@ -2713,10 +2581,6 @@ contains
     k_SIV_O3_M_s = ( ( k298 * EXP( -EaR * (1._r8 / temp_k - 1._r8 / 298._r8) ) * Ka1 / H )    + &
                       ( k1 * EXP( -EaR1 * (1._r8 / temp_k - 1._r8 / 298._r8) ) * (Ka1 * Ka2 / H**2) )  & 
                       ) / (1 + Ka1 / H + Ka1 * Ka2 / H**2)
-
-    ! if (temp_k<=273.15_r8) then
-    !   k_SIV_O3_M_s = 0.0_r8
-    ! end if
     
   endfunction k_SIV_O3_M_s
   
