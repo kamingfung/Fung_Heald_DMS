@@ -9,7 +9,7 @@
 *     fkm : 2020-03-17 : DMS oxidation gas-phase reactions added
 *     fkm : 2020-04-08 : DMS oxidation aq-phase reactions (on aerosol particle) added
 *     fkm : 2021-05-28 : new cloud reactions
-
+*     fkm : 2021-07-07 : gas only
 
       SPECIES
 
@@ -1260,91 +1260,19 @@
 *********************************
 *** fkm for Phase Transfer: Gas-aqueous phase transition for DMS oxidation
 *********************************
-[g2a_DMS_a1]                DMS -> DMS_a1
-[g2a_DMS_a2]                DMS -> DMS_a2
-[g2a_DMS_a3]                DMS -> DMS_a3
-[a2g_DMS_a1]                DMS_a1 -> DMS
-[a2g_DMS_a2]                DMS_a2 -> DMS
-[a2g_DMS_a3]                DMS_a3 -> DMS
-[g2a_DMSO_a1]               DMSO -> DMSO_a1
-[g2a_DMSO_a2]               DMSO -> DMSO_a2
-[g2a_DMSO_a3]               DMSO -> DMSO_a3
-[a2g_DMSO_a1]               DMSO_a1 -> DMSO
-[a2g_DMSO_a2]               DMSO_a2 -> DMSO
-[a2g_DMSO_a3]               DMSO_a3 -> DMSO
-[g2a_MSIA_a1]               MSIA -> MSIA_a1
-[g2a_MSIA_a2]               MSIA -> MSIA_a2
-[g2a_MSIA_a3]               MSIA -> MSIA_a3
-[a2g_MSIA_a1]               MSIA_a1 -> MSIA
-[a2g_MSIA_a2]               MSIA_a2 -> MSIA
-[a2g_MSIA_a3]               MSIA_a3 -> MSIA
-[g2a_MSA_a1]                MSA -> MSA_a1
-[g2a_MSA_a2]                MSA -> MSA_a2
-[g2a_MSA_a3]                MSA -> MSA_a3
-[a2g_MSA_a1]                MSA_a1 -> MSA
-[a2g_MSA_a2]                MSA_a2 -> MSA
-[a2g_MSA_a3]                MSA_a3 -> MSA
-[g2a_OH_a1]                OH -> OH_a1
-[g2a_OH_a2]                OH -> OH_a2
-[g2a_OH_a3]                OH -> OH_a3
-[a2g_OH_a1]                OH_a1 -> OH
-[a2g_OH_a2]                OH_a2 -> OH
-[a2g_OH_a3]                OH_a3 -> OH
-[g2a_O3_a1]                O3 -> O3_a1
-[g2a_O3_a2]                O3 -> O3_a2
-[g2a_O3_a3]                O3 -> O3_a3
-[a2g_O3_a1]                O3_a1 -> O3
-[a2g_O3_a2]                O3_a2 -> O3
-[a2g_O3_a3]                O3_a3 -> O3
 *********************************
 *** fkm for Phase Transfer: aqueous-phase reactions for DMS oxidation
 *********************************
-[DMS_O3_a1]                 DMS_a1  + O3_a1 -> DMSO_a1 + O2
-[DMSO_OH_a1]                DMSO_a1 + OH_a1 -> MSIA_a1
-[MSIA_OH_a1]                MSIA_a1 + OH_a1 -> MSA_a1
-[MSIA_O3_a1]                MSIA_a1 + O3_a1 -> MSA_a1
-[MSA_OH_a1]                 MSA_a1  + OH_a1 -> so4_a1
-[DMS_O3_a2]                 DMS_a2  + O3_a2 -> DMSO_a2 + O2
-[DMSO_OH_a2]                DMSO_a2 + OH_a2 -> MSIA_a2
-[MSIA_OH_a2]                MSIA_a2 + OH_a2 -> MSA_a2
-[MSIA_O3_a2]                MSIA_a2 + O3_a2 -> MSA_a2
-[MSA_OH_a2]                 MSA_a2  + OH_a2 -> so4_a2
-[DMS_O3_a3]                 DMS_a3  + O3_a3 -> DMSO_a3 + O2
-[DMSO_OH_a3]                DMSO_a3 + OH_a3 -> MSIA_a3
-[MSIA_OH_a3]                MSIA_a3 + OH_a3 -> MSA_a3
-[MSIA_O3_a3]                MSIA_a3 + O3_a3 -> MSA_a3
-[MSA_OH_a3]                 MSA_a3  + OH_a3 -> so4_a3
 *********************************
 *** fkm for Cloud Pathway: Gas-cloud phase transition for DMS oxidation
 *********************************
-[g2c_DMS_c]                DMS      -> DMS_c
-[c2g_DMS_c]                DMS_c    -> DMS
-[g2c_DMSO_c]               DMSO     -> DMSO_c
-[c2g_DMSO_c]               DMSO_c   -> DMSO
-[g2c_MSIA_c]               MSIA     -> MSIA_c
-[c2g_MSIA_c]               MSIA_c   -> MSIA
-[g2c_MSA_c]                MSA      -> MSA_c
-[c2g_MSA_c]                MSA_c    -> MSA
-[g2c_OH_c]                 OH       -> OH_c
-[c2g_OH_c]                 OH_c     -> OH
-[g2c_O3_c]                 O3       -> O3_c
-[c2g_O3_c]                 O3_c     -> O3
 *********************************
 *** fkm for Cloud Pathway: cloud-phase reactions for DMS oxidation
 *********************************
-[DMS_O3_c]                 DMS_c  + O3_c -> DMSO_c + O2_c
-[DMSO_OH_c]                DMSO_c + OH_c -> MSIA_c
-[MSIA_OH_c]                MSIA_c + OH_c -> MSA_c
-[MSIA_O3_c]                MSIA_c + O3_c -> MSA_c
-[MSA_OH_c]                 MSA_c  + OH_c -> so4_a3
 *********************************
 *** fkm for MSA RT
 *********************************
 [MSA_to_SO4_g]              MSA     ->  so4_a2                       ; 1.0e10
-[MSA_to_SO4_a1]             MSA_a1  ->  so4_a1                       ; 1.0e10
-[MSA_to_SO4_a2]             MSA_a2  ->  so4_a2                       ; 1.0e10
-[MSA_to_SO4_a3]             MSA_a3  ->  so4_a3                       ; 1.0e10
-[MSA_to_SO4_c]              MSA_c   ->  so4_a3                       ; 1.0e10
 *********************************
 *** fkm for Phase Transfer: SIV
 *********************************
