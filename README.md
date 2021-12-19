@@ -20,5 +20,10 @@ To rerun the simulation cases, please follow these steps:
 4. modify `env_build.xml` in the case directory accordingly:
     1.  `CAM_CONFIG_OPTS` = `-phys cam6 -chem trop_strat_mam4_vbs -age_of_air_trcs -mosaic -usr_mech_infile {case_dir/SourceMod/chem_mech.in}`
 
+## Special Inputs
+To replicate the simulation cases, one would also require the below input files for:
+1. [Sea surface DMS concentration](https://mycuhk-my.sharepoint.com/:u:/g/personal/1155013803_link_cuhk_edu_hk/ER84QGitO5ZNu5MZ5XZHcJwB5We9h4F2FLkbMJRzQ1UZdA?e=asmQTo) for sea-to-air DMS flux
+2. [Volcanic SO2 emission inventory](https://mycuhk-my.sharepoint.com/:u:/g/personal/1155013803_link_cuhk_edu_hk/ERuYabFZKWxBrah0bjHafHgB5TaJ67XWsw38veSnsKTF8A?e=H2AeEL) for PI cases
+
 ---
 For questions, please contact Ka Ming FUNG at kamingfung@mit.edu or kamingfung@link.cuhk.edu.hk.
