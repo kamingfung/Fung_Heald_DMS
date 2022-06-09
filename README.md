@@ -26,4 +26,4 @@ To replicate the simulation cases, one would also require the below input files 
 2. [Volcanic SO2 emission inventory](https://mycuhk-my.sharepoint.com/:u:/g/personal/1155013803_link_cuhk_edu_hk/ERuYabFZKWxBrah0bjHafHgB5TaJ67XWsw38veSnsKTF8A?e=H2AeEL) for PI cases
 
 ---
-For questions, please contact Ka Ming FUNG at kamingfung@mit.edu or kamingfung@link.cuhk.edu.hk.
+For questions, please contact Ka Ming FUNG at kamingfung@link.cuhk.edu.hk.
